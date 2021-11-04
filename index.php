@@ -199,10 +199,68 @@
 
     echo "Nuliai: $nulio_skaciuotuvas, Vienetai: $vienetu_skaciuotuvas, Dvejetai: $dvejetu_skaciuotuvas";
 
+    /* Sesta uzduotis */
+    
+    $sesta_x = rand(1, 6);
+
+    echo "<h$sesta_x>$sesta_x</h$sesta_x>";
+
+    /* Variantas kaip atlikti uzduoti naudojantis if'u pagalba */
+
+    // if($sesta_x == 1)
+    //     echo '<h1>1</h1>';
+
+    // if($sesta_x == 2)
+    //     echo '<h2>2</h2>';
+
+    // if($sesta_x == 3)
+    //     echo '<h3>3</h3>';
+
+    // if($sesta_x == 4)
+    //     echo '<h4>4</h4>';
+
+    // if($sesta_x == 5)
+    //     echo '<h5>5</h5>';
+
+    // if($sesta_x == 6)
+    //     echo '<h6>6</h6>';
+
+    // echo '<span style="color: red;">2</span>';
 
 
 
+    /* Septinta uzduotis */
 
+    echo '<h1>Septinta uzduotis</h1>';
+
+    $septinta_a = rand(-10, 10);
+    $septinta_b = rand(-10, 10);
+    $septinta_c = rand(-10, 10);
+
+    if($septinta_a < 0)
+        echo "<span style=\"color: green;\">$septinta_a</span> ";
+    if($septinta_a > 0)
+        echo "<span style=\"color: blue;\">$septinta_a</span> ";
+    if($septinta_a == 0)
+        echo "<span style=\"color: red;\">$septinta_a</span> ";
+
+    if($septinta_b < 0)
+        echo "<span style=\"color: green;\">$septinta_b</span> ";
+    if($septinta_b > 0)
+        echo "<span style=\"color: blue;\">$septinta_b</span> ";
+    if($septinta_b == 0)
+        echo "<span style=\"color: red;\">$septinta_b</span> ";
+
+    if($septinta_c < 0)
+        echo "<span style=\"color: green;\">$septinta_c</span> ";
+    if($septinta_c > 0)
+        echo "<span style=\"color: blue;\">$septinta_c</span> ";
+    if($septinta_c == 0)
+        echo "<span style=\"color: red;\">$septinta_c</span> ";
+
+
+
+    //
 
     if(isset($_POST['skaicius1']) && isset($_POST['skaicius2']))
         echo 'Suskaičiuotas skaičius: ' . ($_POST['skaicius1'] + $_POST['skaicius2']);
