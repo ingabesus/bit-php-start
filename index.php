@@ -293,59 +293,217 @@
 
     /* Devinta uzduotis */
 
-    echo '<h1>Devinta uzduotis</h1>';
+    // echo '<h1>Devinta uzduotis</h1>';
 
-    $devinta_a = rand(0, 100);
-    $devinta_b = rand(0, 100);
-    $devinta_c = rand(0, 100);
+    // $devinta_a = rand(0, 100);
+    // $devinta_b = rand(0, 100);
+    // $devinta_c = rand(0, 100);
+    // $suma = 0;
+    // $kiekis = 0;
+
+    // //Aritmetinis vidurkis
+    // $vidurkis = round( ($devinta_a + $devinta_b + $devinta_c) / 3 );
+
+    // echo "Reikšmių $devinta_a, $devinta_b ir $devinta_c aritmetinis vidurkis yra: $vidurkis <br />";
+
+    // if($devinta_a > 10 && $devinta_a < 90) {
+    //     $suma += $devinta_a;
+    //     $kiekis++;
+    // }
+
+    // if($devinta_b > 10 && $devinta_b < 90) {
+    //     $suma += $devinta_b;
+    //     $kiekis++;
+    // }
+
+    // if($devinta_c > 10 && $devinta_c < 90) {
+    //     $suma += $devinta_c;
+    //     $kiekis++;
+    // }
+
+    // $vidurkis = ($kiekis > 0) ? round($suma / $kiekis) : 0;
+
+    // echo "Išmetus reikšmes kurios mažesnės už 10 ir didesnės už 90 vidurkis yra: $vidurkis";
+
+        
+
+    // /* Desimta uzduotis */
+
+    // echo '<h1>Desimta uzduotis</h1>';
+
+    // $hours   = rand(0, 23);
+    // $minutes = rand(0, 59);
+    // $seconds = rand(0, 59);
+    // $random_seconds = rand(0, 300);
+
+    // $current_time = date("H:i:s", strtotime("$hours:$minutes:$seconds"));
+
+    // echo 'Gautas laikas: ' . $current_time . '<br />';
+
+    // $new_time = date("H:i:s", strtotime("$hours:$minutes:$seconds") + $random_seconds);
+
+    // echo "Pridejus $random_seconds sekundes laikas yra: $new_time";
+
+
+
+
+
+    
+    echo "<h1>Naujos funkcijos 2021-11-08</h1>";
+
+    $devinta_skaicius = 1.88;
+
+    //echo round($devinta_skaicius);
+    //echo ceil($devinta_skaicius);
+    //echo floor($devinta_skaicius);
+
+
+    /* Devinta uzduotis */
+
+    echo '<h1>Devinta uzduotis</h1>';
+    
+    $a = rand(0, 100);
+    $b = rand(0, 100);
+    $c = rand(0, 100);
     $suma = 0;
     $kiekis = 0;
+    
+    $vidurkis = round( ($a + $b + $c) / 3 );
 
-    //Aritmetinis vidurkis
-    $vidurkis = round( ($devinta_a + $devinta_b + $devinta_c) / 3 );
+    echo "Gauti skaiciai yra $a, $b, $c, o ju vidurkis yra: $vidurkis <br />";
 
-    echo "Reikšmių $devinta_a, $devinta_b ir $devinta_c aritmetinis vidurkis yra: $vidurkis <br />";
-
-    if($devinta_a > 10 && $devinta_a < 90) {
-        $suma += $devinta_a;
+    if($a > 10 && $a < 90) {
+        $suma += $a;
         $kiekis++;
     }
 
-    if($devinta_b > 10 && $devinta_b < 90) {
-        $suma += $devinta_b;
+    if($b > 10 && $b < 90) {
+        $suma += $b;
         $kiekis++;
     }
 
-    if($devinta_c > 10 && $devinta_c < 90) {
-        $suma += $devinta_c;
+    if($c > 10 && $c < 90) {
+        $suma += $c;
         $kiekis++;
     }
 
     $vidurkis = ($kiekis > 0) ? round($suma / $kiekis) : 0;
 
-    echo "Išmetus reikšmes kurios mažesnės už 10 ir didesnės už 90 vidurkis yra: $vidurkis";
-
-        
+    echo "Naujas vidurkis: $vidurkis";
 
     /* Desimta uzduotis */
 
     echo '<h1>Desimta uzduotis</h1>';
 
-    $hours   = rand(0, 23);
+    $hours = rand(0, 23);
     $minutes = rand(0, 59);
     $seconds = rand(0, 59);
     $random_seconds = rand(0, 300);
 
-    $current_time = date("H:i:s", strtotime("$hours:$minutes:$seconds"));
+    $pirmas_laikrodis = date('H:i:s', strtotime("$hours:$minutes:$seconds"));
 
-    echo 'Gautas laikas: ' . $current_time . '<br />';
-
-    $new_time = date("H:i:s", strtotime("$hours:$minutes:$seconds") + $random_seconds);
-
+    echo "Sugeneruotas atsitiktinis laikas yra: $pirmas_laikrodis <br />";
     
+    //mktime()
+
+    $antras_laikrodis = date('H:i:s', strtotime("$hours:$minutes:$seconds") + $random_seconds);
+
+    echo "Pridejus $random_seconds sekundes, naujas laikas yra: $antras_laikrodis";
+
+    /* Vienuolikta uzduotis */
+
+    echo '<h1>Vienuolikta uzduotis</h1>';
+
+    $a = rand(1000, 9999);
+    $b = rand(1000, 9999);
+    $c = rand(1000, 9999);
+    $d = rand(1000, 9999);
+    $e = rand(1000, 9999);
+    $f = rand(1000, 9999);
+
+    echo "Gautos reikšmės: $a, $b, $c, $d, $e, $f <br />";
+
+    $min = min($a, $b, $c, $d, $e, $f);
+    $max = max($a, $b, $c, $d, $e, $f);
+    $last_max = $min;
+
+    echo $min . ', ';
+
+    if(($a < $max && $a > $min) && $a > $last_max) {
+        echo $a . ', ';
+        $last_max = $a;
+    }
+
+    if(($b < $max && $b > $min) && $b > $last_max) {
+        echo $b . ', ';
+        $last_max = $b;
+    }
+
+    if(($c < $max && $c > $min) && $c > $last_max) {
+        echo $c . ', ';
+        $last_max = $c;
+    }
+
+    if(($d < $max && $d > $min) && $d > $last_max) {
+        echo $d . ', ';
+        $last_max = $d;
+    }
+
+    if(($e < $max && $e > $min) && $e > $last_max) {
+        echo $e . ', ';
+        $last_max = $e;
+    }
+
+    if(($f < $max && $f > $min) && $f > $last_max) {
+        echo $f . ', ';
+        $last_max = $f;
+    }
+
+    echo $max;
 
 
-    echo "Pridejus $random_seconds sekundes laikas yra: $new_time";
+    echo '<h1>Funkcijos stringams apdoroti</h1>';
+
+    //Funkcijos stringams apdoroti
+
+    //strlen(string) - Ši funkcija grąžina stringo ilgį
+    //trim() - Pašalina empty space simbolius iš stringo priekio ir galo
+    //str_replace() Sukeicia norimus simbolius, pasirinktais
+    //strtoupper() - Pavercia teksta didziosiomis raidemis
+    //strtolower() - Pavercia teksta mazosiomis raidemis
+    //str_repeat() - Pakartoja teksta pasirinkta kieki kartu
+    //strip_tags() - Pasalina html tag'us is teksto
+
+    $stringas = ' Labas vakaras ';
+    $stringas2 = 'Gera diena';
+    $stringas3 = 'Tekstas turintis <br />';
+
+    echo $stringas . '<br />';
+    echo strlen($stringas) . '<br />';
+    echo trim($stringas) . '<br />';
+    
+    $replaced_string = str_replace('Labas', 'Viso gero', $stringas);
+    
+    echo $replaced_string . '<br />';
+
+    $replaced_string = str_replace(' ', '', $stringas);
+    
+    echo strlen($replaced_string) . '<br />';
+
+    echo strtoupper($stringas) . '<br />';
+
+    echo strtolower($stringas) . '<br />';
+
+    echo substr($stringas2, 0, -(strlen($stringas2) - 3)) . '<br />';
+
+    echo str_repeat($stringas, 5) . '<br />';
+
+    echo strip_tags($stringas3) . '<br />';
+
+    echo strpos($stringas2, 'a');
+
+
+
 
     if(isset($_POST['skaicius1']) && isset($_POST['skaicius2']))
         echo 'Suskaičiuotas skaičius: ' . ($_POST['skaicius1'] + $_POST['skaicius2']);
