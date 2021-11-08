@@ -260,7 +260,92 @@
 
 
 
-    //
+    /* Astunta uzduotis */
+
+    echo '<h1>Astunta uzduotis</h1>';
+
+    $kiekis = rand(5, 3000);
+    $nuolaida = 0;
+
+    if($kiekis > 1000)
+        $nuolaida = 3;
+
+    if($kiekis > 2000)
+        $nuolaida = 4;
+
+    $suma = $kiekis - ( ($kiekis / 100) * $nuolaida );
+
+    echo "<br>Perkamas prekių kiekis yra $kiekis<br/>";
+    echo "<br>Perkamu prekiu suma $suma<br/>";
+
+    // echo $kiekis . '<br />';
+
+    // $bool = true;
+
+    // $nuolaida = $bool ? $nuolaida = 3 : $nuolaida = 0;
+
+    // if($bool):
+    //     echo 'test';
+    // endif;
+
+    //? - if kondicija teisinga
+    //: = else 
+
+    /* Devinta uzduotis */
+
+    echo '<h1>Devinta uzduotis</h1>';
+
+    $devinta_a = rand(0, 100);
+    $devinta_b = rand(0, 100);
+    $devinta_c = rand(0, 100);
+    $suma = 0;
+    $kiekis = 0;
+
+    //Aritmetinis vidurkis
+    $vidurkis = round( ($devinta_a + $devinta_b + $devinta_c) / 3 );
+
+    echo "Reikšmių $devinta_a, $devinta_b ir $devinta_c aritmetinis vidurkis yra: $vidurkis <br />";
+
+    if($devinta_a > 10 && $devinta_a < 90) {
+        $suma += $devinta_a;
+        $kiekis++;
+    }
+
+    if($devinta_b > 10 && $devinta_b < 90) {
+        $suma += $devinta_b;
+        $kiekis++;
+    }
+
+    if($devinta_c > 10 && $devinta_c < 90) {
+        $suma += $devinta_c;
+        $kiekis++;
+    }
+
+    $vidurkis = ($kiekis > 0) ? round($suma / $kiekis) : 0;
+
+    echo "Išmetus reikšmes kurios mažesnės už 10 ir didesnės už 90 vidurkis yra: $vidurkis";
+
+        
+
+    /* Desimta uzduotis */
+
+    echo '<h1>Desimta uzduotis</h1>';
+
+    $hours   = rand(0, 23);
+    $minutes = rand(0, 59);
+    $seconds = rand(0, 59);
+    $random_seconds = rand(0, 300);
+
+    $current_time = date("H:i:s", strtotime("$hours:$minutes:$seconds"));
+
+    echo 'Gautas laikas: ' . $current_time . '<br />';
+
+    $new_time = date("H:i:s", strtotime("$hours:$minutes:$seconds") + $random_seconds);
+
+    
+
+
+    echo "Pridejus $random_seconds sekundes laikas yra: $new_time";
 
     if(isset($_POST['skaicius1']) && isset($_POST['skaicius2']))
         echo 'Suskaičiuotas skaičius: ' . ($_POST['skaicius1'] + $_POST['skaicius2']);
