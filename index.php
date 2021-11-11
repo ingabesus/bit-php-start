@@ -1,4 +1,36 @@
 <?php
+
+    //Ciklai
+
+    echo '<h1>Ciklai</h1>';
+
+    //Inifinite Loop
+    // while(1 < 20) {
+    //     echo 'Test';
+    // }
+
+    $i = 0;
+    $max = 35;
+    $stringas = 'Test';
+    $counter = 0;
+
+    while($i < $max) {
+
+        if($i > 15) {
+            $stringas .= 'KareemAbdulJabar';
+        } else {
+            $stringas .= $i;
+        }
+
+        $stringas = substr($stringas, 0, 1);
+
+        $i++;
+
+    };
+
+    echo $stringas;
+
+
     //echo 'Hello World!';
 
     // var 
@@ -65,19 +97,19 @@
 
     //Skaiciuojam reiksmes
 
-    $skaiciuotuvas = 0;
-    $kondicija = true;
+    // $skaiciuotuvas = 0;
+    // $kondicija = true;
 
-    if($kondicija)
-        $skaiciuotuvas++;
+    // if($kondicija)
+    //     $skaiciuotuvas++;
 
-    if($kondicija)
-        $skaiciuotuvas++;
+    // if($kondicija)
+    //     $skaiciuotuvas++;
 
-    if($kondicija)
-        $skaiciuotuvas++;
+    // if($kondicija)
+    //     $skaiciuotuvas++;
 
-    echo $skaiciuotuvas . '<br />';
+    // echo $skaiciuotuvas . '<br />';
     
     /* Pirma uzduotis */
     
@@ -410,57 +442,6 @@
 
     echo "Pridejus $random_seconds sekundes, naujas laikas yra: $antras_laikrodis";
 
-    /* Vienuolikta uzduotis */
-
-    echo '<h1>Vienuolikta uzduotis</h1>';
-
-    $a = rand(1000, 9999);
-    $b = rand(1000, 9999);
-    $c = rand(1000, 9999);
-    $d = rand(1000, 9999);
-    $e = rand(1000, 9999);
-    $f = rand(1000, 9999);
-
-    echo "Gautos reikšmės: $a, $b, $c, $d, $e, $f <br />";
-
-    $min = min($a, $b, $c, $d, $e, $f);
-    $max = max($a, $b, $c, $d, $e, $f);
-    $last_max = $min;
-
-    echo $min . ', ';
-
-    if(($a < $max && $a > $min) && $a > $last_max) {
-        echo $a . ', ';
-        $last_max = $a;
-    }
-
-    if(($b < $max && $b > $min) && $b > $last_max) {
-        echo $b . ', ';
-        $last_max = $b;
-    }
-
-    if(($c < $max && $c > $min) && $c > $last_max) {
-        echo $c . ', ';
-        $last_max = $c;
-    }
-
-    if(($d < $max && $d > $min) && $d > $last_max) {
-        echo $d . ', ';
-        $last_max = $d;
-    }
-
-    if(($e < $max && $e > $min) && $e > $last_max) {
-        echo $e . ', ';
-        $last_max = $e;
-    }
-
-    if(($f < $max && $f > $min) && $f > $last_max) {
-        echo $f . ', ';
-        $last_max = $f;
-    }
-
-    echo $max;
-
 
     echo '<h1>Funkcijos stringams apdoroti</h1>';
 
@@ -500,30 +481,217 @@
 
     echo strip_tags($stringas3) . '<br />';
 
-    echo strpos($stringas2, 'a');
+    echo strpos($stringas2, 'a') . '<br />';
+
+    $stringas = 'Ląbas Vakaras';
+
+    echo mb_strlen($stringas) . '<br />';
+
+    //echo mb_substr($stringas, 0, -12);
+
+    $stringas = 'Testas';
+
+    $stringas .= ' Testas2';
+
+    if(strlen($stringas) > 5)
+        $stringas .= ' po if kondicijos';
+
+    echo $stringas . '<br />';
+
+    echo '<h3>Explode Funkcija</h3>';
+
+    $stringas = "Don't Be a Menace to South Central While Drinking Your Juice in the Hood";
+    
+    $explode = explode(' ', $stringas);
+
+    echo '<pre>';
+
+    print_r($explode);
+
+    echo '</pre>';
+
+    //implode()
+
+    //Stringai
+
+    echo '<h1>Stringai</h1>';
+
+    echo '<h2>Pirma užduotis</h2>';
+    
+    $aktoriaus_vardas = 'Dzonas';
+    $aktoriaus_pavarde = 'Travolta';
+
+    if(strlen($aktoriaus_vardas) < strlen($aktoriaus_pavarde)) {
+        echo $aktoriaus_vardas;
+    } else {
+        echo $aktoriaus_pavarde;
+    }
+
+    echo '<h2>Antra užduotis</h2>';
+
+    echo strtoupper($aktoriaus_vardas) . ' ' . strtolower($aktoriaus_pavarde);
+ 
+    echo '<h2>Trečia užduotis</h2>';
+
+    echo substr($aktoriaus_vardas, 0, 1) . substr($aktoriaus_pavarde, 0, 1);
+
+    echo '<h2>Ketvirta užduotis</h2>';
+
+    $apr = substr($aktoriaus_vardas, strlen($aktoriaus_vardas) - 3, 3) 
+    . substr($aktoriaus_pavarde, strlen($aktoriaus_pavarde) - 3, 3);
+
+    echo $apr;
+
+    echo '<h2>Penkta užduotis</h2>';
+
+    $movie1 = 'An American in Paris';
+
+    echo str_replace('a', '*', str_replace('A', '*', $movie1));
+
+    echo '<h2>Šešta užduotis</h2>';
+
+    $movie1 = strtolower($movie1);
+
+    // $movie1 = str_replace(' ', '', $movie1);
+    // $movie1 = str_replace('b', '', $movie1);
+    // $movie1 = str_replace('c', '', $movie1);
+    // $movie1 = str_replace('d', '', $movie1);
+    // $movie1 = str_replace('e', '', $movie1);
+    // $movie1 = str_replace('f', '', $movie1);
+    // $movie1 = str_replace('g', '', $movie1);
+    // $movie1 = str_replace('h', '', $movie1);
+    // $movie1 = str_replace('i', '', $movie1);
+    // $movie1 = str_replace('j', '', $movie1);
+    // $movie1 = str_replace('k', '', $movie1);
+    // $movie1 = str_replace('l', '', $movie1);
+    // $movie1 = str_replace('m', '', $movie1);
+    // $movie1 = str_replace('n', '', $movie1);
+    // $movie1 = str_replace('o', '', $movie1);
+    // $movie1 = str_replace('p', '', $movie1);
+    // $movie1 = str_replace('q', '', $movie1);
+    // $movie1 = str_replace('r', '', $movie1);
+    // $movie1 = str_replace('s', '', $movie1);
+    // $movie1 = str_replace('t', '', $movie1);
+    // $movie1 = str_replace('u', '', $movie1);
+    // $movie1 = str_replace('v', '', $movie1);
+    // $movie1 = str_replace('w', '', $movie1);
+    // $movie1 = str_replace('x', '', $movie1);
+    // $movie1 = str_replace('y', '', $movie1);
+    // $movie1 = str_replace('z', '', $movie1);
+
+    //echo strlen($movie1);
+
+    echo substr_count($movie1, 'a');
+
+    echo '<h2>Septinta užduotis</h2>';
+
+    $movie1 = 'An American in Paris';
+
+    $movie1 = str_replace('A', '', $movie1);
+    $movie1 = str_replace('a', '', $movie1);
+    $movie1 = str_replace('E', '', $movie1);
+    $movie1 = str_replace('e', '', $movie1);
+    $movie1 = str_replace('I', '', $movie1);
+    $movie1 = str_replace('i', '', $movie1);
+    $movie1 = str_replace('Y', '', $movie1);
+    $movie1 = str_replace('y', '', $movie1);
+    $movie1 = str_replace('O', '', $movie1);
+    $movie1 = str_replace('o', '', $movie1);
+    $movie1 = str_replace('U', '', $movie1);
+    $movie1 = str_replace('u', '', $movie1);
+
+    echo $movie1;
+
+    echo '<h2>Aštunta užduotis</h2>';
+
+    $series = 'Star Wars: Episode '.str_repeat(' ', rand(0,5)). rand(1,9) . ' - A New Hope';
+
+    echo str_replace('Star Wars: Episode ', '', str_replace(' - A New Hope', '', $series));
+
+    echo '<h2>Devinta užduotis</h2>';
+
+    $tekstas = "Don't Be a Menace to South Central While Drinking Your Juice in the Hood";
+
+    $explode = explode(' ', $tekstas);
+
+    $zodziu_skaiciuotuvas = 0;
+
+    if(strlen($explode[0]) <= 5)
+        $zodziu_skaiciuotuvas++;
+    if(strlen($explode[1]) <= 5)
+        $zodziu_skaiciuotuvas++;
+    if(strlen($explode[2]) <= 5)
+        $zodziu_skaiciuotuvas++;
+    if(strlen($explode[3]) <= 5)
+        $zodziu_skaiciuotuvas++;
+    if(strlen($explode[4]) <= 5)
+        $zodziu_skaiciuotuvas++;
+    if(strlen($explode[5]) <= 5)
+        $zodziu_skaiciuotuvas++;
+    if(strlen($explode[6]) <= 5)
+        $zodziu_skaiciuotuvas++;
+    if(strlen($explode[7]) <= 5)
+        $zodziu_skaiciuotuvas++;
+    if(strlen($explode[8]) <= 5)
+        $zodziu_skaiciuotuvas++;
+    if(strlen($explode[9]) <= 5)
+        $zodziu_skaiciuotuvas++;
+    if(strlen($explode[10]) <= 5)
+        $zodziu_skaiciuotuvas++;
+    if(strlen($explode[11]) <= 5)
+        $zodziu_skaiciuotuvas++;
+    if(strlen($explode[12]) <= 5)
+        $zodziu_skaiciuotuvas++;
+    if(strlen($explode[13]) <= 5)
+        $zodziu_skaiciuotuvas++;
+
+
+    echo $zodziu_skaiciuotuvas;
+
+    echo '<h2>Dešimta užduotis</h2>';
+    
+    $alfabetas = "a b c d e f g h i k l m n";
+                  
+    $alfabetas_masyvas = explode(' ', $alfabetas);
+
+    $alfabetas = str_replace(' ', '', $alfabetas);
+
+    echo $alfabetas_masyvas[rand(0, strlen($alfabetas) -1)] .
+         $alfabetas_masyvas[rand(0, strlen($alfabetas) -1)] .
+         $alfabetas_masyvas[rand(0, strlen($alfabetas) -1)];
 
 
 
 
-    if(isset($_POST['skaicius1']) && isset($_POST['skaicius2']))
-        echo 'Suskaičiuotas skaičius: ' . ($_POST['skaicius1'] + $_POST['skaicius2']);
 
 
-    if(isset($_POST['skaicius3']) && isset($_POST['skaicius4']))
-        echo 'Suskaičiuotas skaičius: ' . ($_POST['skaicius3'] - $_POST['skaicius4']);
 
 
-    if(isset($_POST['skaicius5']) && isset($_POST['skaicius6']))
-        echo 'Suskaičiuotas skaičius: ' . ($_POST['skaicius5'] * $_POST['skaicius6']);
 
 
-    if(isset($_POST['skaicius7']) && isset($_POST['skaicius8']))
-        echo 'Suskaičiuotas skaičius: ' . ($_POST['skaicius7'] / $_POST['skaicius8']);
+
+
+
+
+    // if(isset($_POST['skaicius1']) && isset($_POST['skaicius2']))
+    //     echo 'Suskaičiuotas skaičius: ' . ($_POST['skaicius1'] + $_POST['skaicius2']);
+
+
+    // if(isset($_POST['skaicius3']) && isset($_POST['skaicius4']))
+    //     echo 'Suskaičiuotas skaičius: ' . ($_POST['skaicius3'] - $_POST['skaicius4']);
+
+
+    // if(isset($_POST['skaicius5']) && isset($_POST['skaicius6']))
+    //     echo 'Suskaičiuotas skaičius: ' . ($_POST['skaicius5'] * $_POST['skaicius6']);
+
+
+    // if(isset($_POST['skaicius7']) && isset($_POST['skaicius8']))
+    //     echo 'Suskaičiuotas skaičius: ' . ($_POST['skaicius7'] / $_POST['skaicius8']);
 
     //if(isset($_GET['skaicius1']) || isset($_GET['skaicius2']);
 
 ?>
-
+<!--
 <h1>Sudėtis</h1>
 
 <form method="POST">
@@ -555,3 +723,4 @@
     <input type="text" name="skaicius8" value="0" />
     <button type="submit">Submit</button>
 </form>
+-->
