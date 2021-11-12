@@ -9,26 +9,62 @@
     //     echo 'Test';
     // }
 
-    $i = 0;
-    $max = 35;
-    $stringas = 'Test';
-    $counter = 0;
+    // $i = 0;
+    // $max = 35;
+    // $stringas = 'Test';
+    // $counter = 0;
 
-    while($i < $max) {
+    // while($i < $max) {
 
-        if($i > 15) {
-            $stringas .= 'KareemAbdulJabar';
-        } else {
-            $stringas .= $i;
-        }
+    //     if($i > 15) {
+    //         $stringas .= 'KareemAbdulJabar';
+    //     } else {
+    //         $stringas .= $i;
+    //     }
 
-        $stringas = substr($stringas, 0, 1);
+    //     $stringas = substr($stringas, 0, 1);
 
-        $i++;
+    //     $i++;
 
-    };
+    // };
 
-    echo $stringas;
+    // echo $stringas;
+
+    // $i = 0; 
+    
+    // echo '<div style="word-break: break-all;">';
+
+    // while($i < 400) {
+    //     echo '*';
+
+    //     $i++;
+    // }
+
+    // echo '</div>';
+    
+
+    // $i = 0;
+
+    // while($i < 400) {
+
+    //     if($i != 0) {
+    //         if ($i % 50 == 0) {
+    //             echo '<br />';
+    //         }
+    //     }
+
+    //     echo '*';
+
+    //     $i++;
+    // }
+
+    
+
+    for($s = 0; $s < 400; $s++) { 
+        rand();
+        echo '*';
+
+    }
 
 
     //echo 'Hello World!';
@@ -661,7 +697,7 @@
          $alfabetas_masyvas[rand(0, strlen($alfabetas) -1)];
 
 
-
+    
 
 
 
