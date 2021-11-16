@@ -1,70 +1,200 @@
 <?php
 
-    //Ciklai
+    $i = true;
+    $skaiciuotuvas = 0;
 
-    echo '<h1>Ciklai</h1>';
+    while($i) {
 
-    //Inifinite Loop
-    // while(1 < 20) {
-    //     echo 'Test';
-    // }
+        $skaiciuotuvas++;
 
-    // $i = 0;
-    // $max = 35;
-    // $stringas = 'Test';
-    // $counter = 0;
+        if($skaiciuotuvas > 5)
+            break;
+        
+    }
 
-    // while($i < $max) {
+    echo $skaiciuotuvas;
 
-    //     if($i > 15) {
-    //         $stringas .= 'KareemAbdulJabar';
-    //     } else {
-    //         $stringas .= $i;
-    //     }
 
-    //     $stringas = substr($stringas, 0, 1);
+    //Trecia uzduotis
 
-    //     $i++;
+    echo '<h2>Skaiciu be liekanos skaiciavimas</h2>';
 
-    // };
+    $i = 1;
+    $max = 3000;
 
-    // echo $stringas;
+    while($i <= $max) {
 
-    // $i = 0; 
-    
-    // echo '<div style="word-break: break-all;">';
+        $skaicius = $i / 77;
 
-    // while($i < 400) {
-    //     echo '*';
+        if(round($skaicius) == $skaicius) {
 
-    //     $i++;
-    // }
+            echo $i;
 
-    // echo '</div>';
-    
+            if($i < $max - 77)
+                echo ', ';
 
-    // $i = 0;
+        }
 
-    // while($i < 400) {
+        // if( !fmod($i, 77) ) {
+        //     echo $i;
 
-    //     if($i != 0) {
-    //         if ($i % 50 == 0) {
-    //             echo '<br />';
-    //         }
-    //     }
+        //     if($i < $max - 77)
+        //         echo ', ';
 
-    //     echo '*';
+        // }
 
-    //     $i++;
-    // }
+        $i++;
+    }
 
-    
+    //Ketvirta uzduotis
 
-    for($s = 0; $s < 400; $s++) { 
-        rand();
-        echo '*';
+    echo '<h2>Kvadratas</h2>';
+
+    echo '<div style="line-height: 7px;">';
+
+    $dydis  = 25;
+    $suma   = $dydis * $dydis;
+    $eilute = 1;
+    $kaire  = 1;
+    $desine = $dydis;
+
+    for($i = 1; $i <= $suma; $i++ ) {
+
+        if($eilute == $kaire || $eilute == $desine) {
+            echo '<span style="color:red;">*</span>';
+        } else {
+            echo '*';
+        }
+
+        if($eilute == $dydis) {
+
+            echo '<br />';
+            $eilute = 0;
+            $kaire++;
+            $desine--;
+        }
+
+        $eilute++;
 
     }
+
+    echo '</div>';
+
+    //Ciklai 2021-11-16
+
+    echo '<h2>Ciklai 2021-11-16</h2>';
+
+    //Break, Continue komandos;
+
+    // $i = 0;
+
+    // while($i < 100) {
+
+    //     $i++;
+
+    //     if($i > 10 && $i < 20) 
+    //         continue;
+    //         //break;
+
+    //     echo $i. '<br />';
+        
+    // }
+    
+    //Foreach ciklas
+
+    $tekstas = "Don't Be a Menace to South Central While Drinking Your Juice in the Hood";
+
+    $explode = explode(' ', $tekstas);
+
+    $zodziu_skaiciuotuvas = 0;
+
+    //Su foreach funkcija
+
+    // foreach($explode as $zodis) {
+
+    //     if( strlen($zodis) <= 5 )
+    //         $zodziu_skaiciuotuvas++;
+
+    // }
+
+    //For versija tai paciai uzduociai
+    
+    $max = count($explode);
+
+    for($i = 0; $i < $max; $i++) {
+
+        if( strlen($explode[$i]) <= 5 )
+            $zodziu_skaiciuotuvas++;
+
+    }
+
+    //echo $zodziu_skaiciuotuvas;
+
+
+    for($i = 0; $i < 10; $i++) {
+
+        echo '<br /> <span style="color: green;">Test $i</span> <br />';
+
+        for($x = 0; $x < 10; $x++) {
+            
+            if($i == $x) 
+
+            echo '<span style="color: red;">Test $x</span>, ';
+
+            for($y = 0; $y < 10; $y++) {
+
+
+                echo '<span style="color: blue;">Test $y</span>, ';
+    
+            }
+
+        }
+
+    }
+
+
+    //Foreach versija pasiimant indeksa ir reiksme
+
+    // foreach($explode as $indeksas => $reiksme) {
+
+    //     echo $indeksas . ' ' . $reiksme . '<br />';
+
+    // }
+
+    
+
+
+    // if(strlen($explode[0]) <= 5)
+    //     $zodziu_skaiciuotuvas++;
+    // if(strlen($explode[1]) <= 5)
+    //     $zodziu_skaiciuotuvas++;
+    // if(strlen($explode[2]) <= 5)
+    //     $zodziu_skaiciuotuvas++;
+    // if(strlen($explode[3]) <= 5)
+    //     $zodziu_skaiciuotuvas++;
+    // if(strlen($explode[4]) <= 5)
+    //     $zodziu_skaiciuotuvas++;
+    // if(strlen($explode[5]) <= 5)
+    //     $zodziu_skaiciuotuvas++;
+    // if(strlen($explode[6]) <= 5)
+    //     $zodziu_skaiciuotuvas++;
+    // if(strlen($explode[7]) <= 5)
+    //     $zodziu_skaiciuotuvas++;
+    // if(strlen($explode[8]) <= 5)
+    //     $zodziu_skaiciuotuvas++;
+    // if(strlen($explode[9]) <= 5)
+    //     $zodziu_skaiciuotuvas++;
+    // if(strlen($explode[10]) <= 5)
+    //     $zodziu_skaiciuotuvas++;
+    // if(strlen($explode[11]) <= 5)
+    //     $zodziu_skaiciuotuvas++;
+    // if(strlen($explode[12]) <= 5)
+    //     $zodziu_skaiciuotuvas++;
+    // if(strlen($explode[13]) <= 5)
+    //     $zodziu_skaiciuotuvas++;
+
+
+    // echo $zodziu_skaiciuotuvas;
 
 
     //echo 'Hello World!';
@@ -697,7 +827,92 @@
          $alfabetas_masyvas[rand(0, strlen($alfabetas) -1)];
 
 
+    //Ciklai
+
+    echo '<h1>Ciklai</h1>';
+
+    //Inifinite Loop
+    // while(1 < 20) {
+    //     echo 'Test';
+    // }
+
+    // $i = 0;
+    // $max = 35;
+    // $stringas = 'Test';
+    // $counter = 0;
+
+    // while($i < $max) {
+
+    //     if($i > 15) {
+    //         $stringas .= 'KareemAbdulJabar';
+    //     } else {
+    //         $stringas .= $i;
+    //     }
+
+    //     $stringas = substr($stringas, 0, 1);
+
+    //     $i++;
+
+    // };
+
+    // echo $stringas;
+
+    // $i = 0; 
     
+    // echo '<div style="word-break: break-all;">';
+
+    // while($i < 400) {
+    //     echo '*';
+
+    //     $i++;
+    // }
+
+    // echo '</div>';
+    
+
+    // $i = 0;
+
+    // while($i < 400) {
+
+    //     if($i != 0) {
+    //         if ($i % 50 == 0) {
+    //             echo '<br />';
+    //         }
+    //     }
+
+    //     echo '*';
+
+    //     $i++;
+    // }
+
+    
+
+    // for($s = 0; $s < 400; $s++) { 
+    //     rand();
+    //     echo '*';
+
+    // }
+    
+    $i = 0;
+    $skaiciuotuvas = 1;
+
+    while($i < 300) {
+        $skaicius = rand(0, 300);
+
+        if($skaicius > 275) 
+            echo '<span style="color: red;">' . $skaicius . '</span> ';
+        else 
+            echo $skaicius . ' ';
+
+
+        if($skaicius > 150)
+            $skaiciuotuvas++;
+
+        $i++;
+    }
+
+    echo 'Isviso buvo skaiciu kuriu reiksme didesne negu 150: ' . $skaiciuotuvas;
+
 
 
 
