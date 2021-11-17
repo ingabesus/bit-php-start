@@ -80,6 +80,91 @@
 
     echo '</div>';
 
+    //Sesta uzduotis
+
+    echo '<h2>Sesta uzduotis</h2>';
+
+    //A Salyga
+
+    echo '<h3>A Salyga</h3>'; 
+
+    $i = true;
+
+    while($i) {
+
+        $skaicius = rand(0, 1);
+
+        if($skaicius == 1) {
+
+            echo 'S';
+
+        } else {
+          
+            echo 'H';
+
+            $i = false;
+
+        }
+
+    }
+
+   echo '<h3>B Salyga</h3>'; 
+
+    //B Salyga
+
+    $herbu_skaitiklis = 0;
+
+    do {
+
+        $skaicius = rand(0, 1);
+
+        if($skaicius == 1) {
+
+            echo 'S';
+
+        } else {
+          
+            echo 'H';
+            
+            $herbu_skaitiklis++;
+
+        }
+
+        if($herbu_skaitiklis > 2)
+            break;
+
+    } while(true);
+
+    //Salyga
+
+    echo '<h3>C Salyga</h3>'; 
+
+    $herbu_skaitiklis = 0;
+
+    while(true) {
+
+        $skaicius = rand(0, 1);
+
+        if($skaicius == 1) {
+
+            echo 'S';
+
+            $herbu_skaitiklis = 0;
+
+        } else {
+          
+            echo 'H';
+            
+            $herbu_skaitiklis++;
+
+        }
+
+        if($herbu_skaitiklis > 2)
+            break;
+
+    }
+
+
     //Ciklai 2021-11-16
 
     echo '<h2>Ciklai 2021-11-16</h2>';
