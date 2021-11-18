@@ -1,5 +1,44 @@
 <?php
 
+    //Masyvu pildymas cikle
+
+    $masyvas = array(); // Arba tiesiog lauztiniai skliaustai []
+
+    for($i = 0; $i < 10; $i++) {
+
+        $masyvas[] = $i; //Prie auksciau sukurto masyvo pridedame cikle sukurta reiksme
+
+    }
+    echo '<pre>';
+    print_r($masyvas);
+    echo '</pre>';
+
+
+    //Ciklas cikle
+
+    $x = 0;
+    $y = 0;
+
+    while($x < 10) {
+
+        $duomenys = true;
+        
+        while($y < 5) {
+
+            if($duomenys) {
+
+                echo 'test <br />';
+            }
+
+            $y++;
+
+        }
+
+        $x++;
+
+    }
+
+
     $i = true;
     $skaiciuotuvas = 0;
 
