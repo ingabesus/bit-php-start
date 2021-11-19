@@ -1,5 +1,127 @@
 <?php
 
+    $x = 2;
+    $pirminis = true; 
+
+    for($i = 2; $i <= ($x / 2); $i++) {
+
+        if($x % $i == 0)
+            $pirminis = false; 
+            
+    }
+
+    if($pirminis)
+        echo 'Pirminis';
+    else 
+        echo 'Nera pirminis';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    echo '<h1>Vinies kalimas</h1>';
+
+    $vinys = 5;
+    $vinies_ilgis = 85; 
+    $bendras_ilgis = $vinys * $vinies_ilgis;
+    $smugis = 1;
+    $ikalta = 0;
+    
+    //A Variantas
+
+    echo '<h2>A Variantas</h2>';
+
+    while(true) {
+
+        $ikalta += rand(5, 20);
+        $smugis++;
+
+        if($ikalta >= $bendras_ilgis) {
+            echo 'Prireike smugiu: ' . $smugis;
+            break;
+        }
+    }
+
+
+    //B Variantas
+
+    echo '<h2>B Variantas</h2>';
+
+    $smugis = 1;
+    $ikalta = 0;
+
+    while(true) {
+
+        $tikimybe = mt_rand(0, 1);
+
+        if($tikimybe == 1) {
+            $ikalta  += rand(20, 30);
+            $smugis++;
+        }
+
+        if($ikalta >= $bendras_ilgis) {
+            echo 'Prireike smugiu: ' . $smugis;
+            break;
+        }
+
+    }
+
+    echo '<h1>Vinies kalimas Alternatyvi versija</h1>';
+
+    $vinys = 5;
+    $vinies_ilgis = 85; 
+    $smugiai = 1;
+    $ikalta = 0;
+    
+    //A Variantas
+
+    echo '<h2>A Variantas</h2>';
+
+    $i = 1;
+
+    while($i <= $vinys) {
+
+        $ikalta = 0;
+        $smugis = 1;
+
+        while($ikalta <= $vinies_ilgis) {
+
+            $ikalta += rand(5, 20);
+            $smugis++;
+            $smugiai++;
+
+        }
+
+        echo $i . ' vinis sėkmingai įkaltas <br />';
+
+        $i++;
+    }
+
+    echo $vinys . ' vinis prireike kalti ' . $smugiai . ' smūgiais.';
+
+
+
+    //B Variantas
+
+    echo '<h2>B Variantas</h2>';
+
+
+
+    //Erroru tipai
+    // Pirmas tipas: Fatal Error 
+    // Antras tipas: Notice
+    // Trecias tipas: Warning
+
+
     //Masyvu pildymas cikle
 
     $masyvas = array(); // Arba tiesiog lauztiniai skliaustai []
@@ -13,6 +135,11 @@
     print_r($masyvas);
     echo '</pre>';
 
+    $stringas = '';
+
+    $stringas .= 'awd';
+    $stringas .= 'awdaw';
+    
 
     //Ciklas cikle
 
