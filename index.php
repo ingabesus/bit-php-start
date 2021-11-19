@@ -1,21 +1,79 @@
 <?php
 
-    $x = 2;
-    $pirminis = true; 
+    // $x = 2;
+    // $pirminis = true; 
 
-    for($i = 2; $i <= ($x / 2); $i++) {
+    // for($i = 2; $i <= ($x / 2); $i++) {
 
-        if($x % $i == 0)
-            $pirminis = false; 
+    //     if($x % $i == 0)
+    //         $pirminis = false; 
             
+    // }
+
+    // if($pirminis)
+    //     echo 'Pirminis';
+    // else 
+    //     echo 'Nera pirminis';
+    
+
+
+
+
+    // $stringas = '';
+    // $masyvas = [];
+    // $count = 0;
+
+    // for($i = 0; $i < 200; $i++) {
+
+    //     $skaicius = rand(0, 200);
+
+    //     if(!in_array($skaicius, $masyvas))
+    //         $masyvas[] = $skaicius;
+
+    //     if(strlen(str_replace(' '.$skaicius.' ', '  ', $stringas)) == strlen($stringas)) {
+    //         $stringas .= $skaicius. ' ';
+    //         $count++;
+    //     }
+
+    // }
+
+    // echo $count.'<br />';
+    // echo $stringas.'<br />';
+    // print_r($masyvas);
+
+
+    // echo '<h1>Skaiciu stringo generavimas</h1>';
+
+
+    $masyvas = [];
+
+    for($i = 0; $i < 50; $i++) {
+
+        $skaicius = rand(1, 200);
+
+        if(!in_array($skaicius, $masyvas)) {
+            $masyvas[] = $skaicius;
+        }
+
     }
 
-    if($pirminis)
-        echo 'Pirminis';
-    else 
-        echo 'Nera pirminis';
+    sort($masyvas);
 
+    foreach($masyvas as $skaicius) {
 
+        $pirminis = true; 
+
+        for($i = 2; $i <= ($skaicius / 2); $i++) {
+
+            if($skaicius % $i == 0)
+                $pirminis = false; 
+                
+        }
+
+        if($pirminis)
+            echo $skaicius . ' ';
+
+    }
 
 
 
