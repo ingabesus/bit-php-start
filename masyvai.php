@@ -1,4 +1,7 @@
 <?php
+
+echo '<pre>';
+
 //Masyvai
 
 //Paprastas masyvas
@@ -102,11 +105,72 @@ unset($unikalus_masyvas['parduotuve3']);
 if(array_key_exists( 'parduotuve5', $unikalus_masyvas) )
     echo 'Indeksas egzistuoja';
 
-echo '<pre>';
 print_r($unikalus_masyvas);
 
 $skaiciu_masyvas = [0,15,22,52,10523,15128,189156];
 
 echo array_sum($skaiciu_masyvas);
 
+//Masyvai
 
+echo '<h1>Masyvu uzduotys</h1>';
+
+//Pirma uzduotis
+
+echo '<h2>Pirma uzduotis</h2>';
+
+$masyvas = [];
+
+for($i = 0; $i < 30; $i++) {
+
+    $skaicius = rand(5, 25);
+
+    $masyvas[] = $skaicius;
+
+}
+
+print_r($masyvas);
+
+//A uzduotis
+
+echo '<h2>Pirmos uzduoties A</h2>';
+
+$reiksmes = 0;
+
+foreach($masyvas as $skaicius) {
+
+    if($skaicius > 10)
+        $reiksmes++;
+
+}
+
+echo $reiksmes;
+
+//B uzduotis
+
+echo '<h2>Pirmos uzduoties B</h2>';
+
+$didziausios_reiksmes_indeksas = array_keys($masyvas, max($masyvas));
+
+//count() - grazina skaiciu kiek turime reiksmiu masyve
+
+foreach($didziausios_reiksmes_indeksas as $indeksas) {
+
+    echo 'Reiksme: ' . $masyvas[$indeksas] . ' Indeksas:'. $indeksas . '<br />';
+
+}
+
+//C uzduotis
+
+echo '<h2>Pirmos uzduoties C</h2>';
+
+$reiksmiu_suma = 0;
+
+foreach($masyvas as $indeksas => $reiksme) {
+
+    if($indeksas % 2 == 0)
+        $reiksmiu_suma += $reiksme;
+
+}
+
+echo $reiksmiu_suma;
