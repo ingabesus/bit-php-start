@@ -303,3 +303,11 @@ echo 'A raidziu masyve yra: ' . $raide_a . '<br />';
 echo 'B raidziu masyve yra: ' . $raide_b . '<br />';
 echo 'C raidziu masyve yra: ' . $raide_c . '<br />';
 echo 'D raidziu masyve yra: ' . $raide_d . '<br />';
+
+
+//print_r($raidziu_masyvas);
+
+$pirmas_masyvas = [0 => 'A', 1=> 'C', 2=> 'D'];
+$antras_masyvas = [0 => 'B', 1=> 'A', 2=> 'D'];
+
+echo $pirmas_masyvas[0] . $antras_masyvas[0];
