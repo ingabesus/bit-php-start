@@ -174,3 +174,132 @@ foreach($masyvas as $indeksas => $reiksme) {
 }
 
 echo $reiksmiu_suma;
+
+//D uzduotis
+
+echo '<h2>Pirmos uzduoties D</h2>';
+
+$naujas_masyvas = [];
+
+foreach($masyvas as $indeksas => $reiksme) {
+
+    $naujas_masyvas[] = $reiksme - $indeksas; 
+
+}
+
+print_r($naujas_masyvas);
+
+//E uzduotis
+
+echo '<h2>Pirmos uzduoties E</h2>';
+
+for($i = 0; $i < 10; $i++) {
+
+    $naujas_masyvas[] = rand(5, 25);
+
+}
+
+print_r($naujas_masyvas);
+
+//F uzduotis
+
+echo '<h2>Pirmos uzduoties F</h2>';
+
+$pirmas_masyvas = [];
+$antras_masyvas = [];
+
+foreach($naujas_masyvas as $indeksas => $reiksme) {
+
+    if($indeksas % 2 == 0) {
+        $pirmas_masyvas[] = $reiksme;
+    } else {
+        $antras_masyvas[] = $reiksme;
+    }
+
+}
+
+echo 'Pirmas masyvas: <br />';
+print_r($pirmas_masyvas);
+echo 'Antras masyvas: <br />';
+print_r($antras_masyvas);
+
+//G uzduotis
+
+echo '<h2>Pirmos uzduoties G</h2>';
+
+foreach($naujas_masyvas as $indeksas => $reiksme) {
+
+    if($indeksas % 2 == 0 and $reiksme > 15)
+        $naujas_masyvas[$indeksas] = 0;
+
+}
+
+print_r($naujas_masyvas);
+
+//H uzduotis
+
+echo '<h2>Pirmos uzduoties H</h2>';
+
+$maziausias_indeksas = 0;
+
+foreach ($naujas_masyvas as $indeksas => $reiksme) {
+    
+    if ($reiksme > 10) {
+        $maziausias_indeksas =  $indeksas;
+        break;
+    }
+
+}
+
+echo $maziausias_indeksas;
+
+//H uzduotis
+
+echo '<h2>Pirmos uzduoties I</h2>';
+
+foreach($naujas_masyvas as $indeksas => $reiksme) {
+
+    if($indeksas % 2 == 0)
+        unset($naujas_masyvas[$indeksas]);
+
+}
+
+print_r($naujas_masyvas);
+
+//Trecia uzduotis
+
+echo '<h1>Trecia uzduotis</h1>';
+
+$atsiktines_raides = ['A', 'B', 'C', 'D'];
+$raidziu_masyvas   = [];
+$raide_a           = 0;
+$raide_b           = 0;
+$raide_c           = 0;
+$raide_d           = 0;
+
+for($i = 0; $i < 200; $i++) {
+
+    $raide = $atsiktines_raides[rand(0, 3)];
+
+    $raidziu_masyvas[] = $raide; 
+
+    if($raide == 'A')
+        $raide_a++;
+
+    if($raide == 'B')
+        $raide_b++;
+
+    if($raide == 'C')
+        $raide_c++;
+
+    if($raide == 'D')
+        $raide_d++;
+
+}
+
+//print_r($raidziu_masyvas);
+
+echo 'A raidziu masyve yra: ' . $raide_a . '<br />';
+echo 'B raidziu masyve yra: ' . $raide_b . '<br />';
+echo 'C raidziu masyve yra: ' . $raide_c . '<br />';
+echo 'D raidziu masyve yra: ' . $raide_d . '<br />';
