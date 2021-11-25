@@ -58,7 +58,8 @@ foreach($masyvas as $indeksas => $reiksme) {
 //array_reverse() Veikia su abiejais tipais
 //array_replace() Sukeicia masyve esancias reiksmes
 //array_search() iesko teksto masyve
-//array_push() prideda nauja reiksme
+//array_push() prideda nauja reiksme i masyvo gala
+//array_unshift prideda nauja reiksme i masyvo prieki
 //array_unique() Isfiltruoja masyva, kad jame liktu tik unikalios reiksmes
 //https://www.php.net/manual/en/function.array-unique
 //unset() - Pasalina norima indeksa is masyvo
@@ -297,17 +298,57 @@ for($i = 0; $i < 200; $i++) {
 
 }
 
-//print_r($raidziu_masyvas);
-
 echo 'A raidziu masyve yra: ' . $raide_a . '<br />';
 echo 'B raidziu masyve yra: ' . $raide_b . '<br />';
 echo 'C raidziu masyve yra: ' . $raide_c . '<br />';
 echo 'D raidziu masyve yra: ' . $raide_d . '<br />';
 
+//Ketvirta uzduotis
 
-//print_r($raidziu_masyvas);
+echo '<h1>Ketvirta uzduotis</h1>';
 
-$pirmas_masyvas = [0 => 'A', 1=> 'C', 2=> 'D'];
-$antras_masyvas = [0 => 'B', 1=> 'A', 2=> 'D'];
+//Rusiavimas pagal abecele
+asort($raidziu_masyvas);
 
-echo $pirmas_masyvas[0] . $antras_masyvas[0];
+print_r($raidziu_masyvas);
+
+//Penkta uzduotis
+
+echo '<h1>Penkta uzduotis</h1>';
+
+$raidziu_masyvas = ['A', 'B', 'C', 'D'];
+$pirmas_masyvas  = [];
+$antras_masyvas  = [];
+$trecias_masyvas = [];
+
+for($i = 0; $i < 200; $i++) {
+
+    $pirmas_masyvas[]  = $raidziu_masyvas[rand(0, 3)];
+    $antras_masyvas[]  = $raidziu_masyvas[rand(0, 3)];
+    $trecias_masyvas[] = $raidziu_masyvas[rand(0, 3)];
+
+}
+
+$naujas_masyvas = [];
+$raidziu_skaiciuotuvas = 0;
+
+foreach($pirmas_masyvas as $i => $masyvas) {
+
+    if($pirmas_masyvas[$i] != $antras_masyvas[$i] 
+        && $antras_masyvas[$i] != $trecias_masyvas[$i] 
+        && $trecias_masyvas[$i] != $pirmas_masyvas[$i]){
+            $raidziu_skaiciuotuvas++;
+    }
+
+    $naujas_masyvas[] = $pirmas_masyvas[$i] . $antras_masyvas[$i] . $trecias_masyvas[$i];
+
+}
+
+echo 'Nesikartojanciu raidziu elementuose yra: ' . $raidziu_skaiciuotuvas . '<br />';
+echo 'Unikaliu kombinaciju yra: ' . count( array_unique($naujas_masyvas) );
+
+$naujas_masyvas[] = 'Test';
+
+array_unshift($naujas_masyvas, 'Test');
+
+print_r($naujas_masyvas);
