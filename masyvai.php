@@ -347,8 +347,72 @@ foreach($pirmas_masyvas as $i => $masyvas) {
 echo 'Nesikartojanciu raidziu elementuose yra: ' . $raidziu_skaiciuotuvas . '<br />';
 echo 'Unikaliu kombinaciju yra: ' . count( array_unique($naujas_masyvas) );
 
-$naujas_masyvas[] = 'Test';
+// $naujas_masyvas[] = 'Test';
 
-array_unshift($naujas_masyvas, 'Test');
+// array_unshift($naujas_masyvas, 'Test');
+
+// print_r($naujas_masyvas);
+
+//Sesta uzduotis
+
+echo '<h1>Sesta uzduotis</h1>';
+
+$pirmas_masyvas = [];
+$antras_masyvas = [];
+
+while(count($pirmas_masyvas) < 100) {
+
+    $skaicius = rand(100, 999);
+
+    if(in_array($skaicius, $pirmas_masyvas))
+        continue;
+    
+    $pirmas_masyvas[] = $skaicius;
+
+}
+
+while(count($antras_masyvas) < 100) {
+
+    $skaicius = rand(100, 999);
+
+    if(in_array($skaicius, $antras_masyvas))
+        continue;
+    
+    $antras_masyvas[] = $skaicius;
+
+}
+
+print_r(array_unique($pirmas_masyvas));
+print_r(array_unique($antras_masyvas));
+
+//Septinta uzduotis
+
+echo '<h1>Septinta uzduotis</h1>';
+
+$naujas_masyvas = [];
+
+foreach($pirmas_masyvas as $indeksas => $reiksme) {
+
+    if(!in_array($reiksme, $antras_masyvas)) {
+        $naujas_masyvas[] = $reiksme;
+    }
+
+}
+
+print_r($naujas_masyvas);
+
+//Astunta uzduotis
+
+echo '<h1>Astunta uzduotis</h1>';
+
+$naujas_masyvas = [];
+
+foreach($pirmas_masyvas as $indeksas => $reiksme) {
+
+    if(in_array($reiksme, $antras_masyvas)) {
+        $naujas_masyvas[] = $reiksme;
+    }
+
+}
 
 print_r($naujas_masyvas);
