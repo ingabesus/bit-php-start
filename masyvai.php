@@ -2,6 +2,61 @@
 
 echo '<pre>';
 
+$masyvas = [
+    1,
+    2 => [
+       1 => 'abc',
+       2 => [
+           15 => [
+               25 => [
+
+               ]
+           ]
+       ] 
+    ]
+]; 
+
+//is_int() - Grazina true arba false rezultata ar paduodamas parametras yra skaicius
+//is_string() - Grazina true arba false rezultata ar paduodamas parametras yra stringas
+//is_array() - Grazina true arba false rezultata ar paduodamas parametras yra masyvas
+
+foreach($masyvas as $reiksme) {
+
+    if(is_array($reiksme)) {
+        
+        foreach($reiksme as $child) {
+
+            echo $child;
+
+        }
+
+    } else {
+        echo $reiksme;
+    }
+
+}
+
+echo '<h1>Masyvai masyvuose</h1>';
+
+//Pirma uzduotis
+
+echo '<h1>Pirma uzduotis</h1>';
+
+$masyvas = [];
+
+for($i = 0; $i < 10; $i++) {
+
+    for($x = 0; $x < 5; $x++) {
+
+        $masyvas[$i][] = rand(5, 25);
+
+    }
+
+}
+
+print_r($masyvas);
+
+
 //Masyvai
 
 //Paprastas masyvas
@@ -414,5 +469,125 @@ foreach($pirmas_masyvas as $indeksas => $reiksme) {
     }
 
 }
+
+print_r($naujas_masyvas);
+
+//Devinta uzduotis
+
+echo '<h1>Devinta uzduotis</h1>';
+
+//Sprendimas su ciklais
+
+$naujas_masyvas = [];
+
+foreach($pirmas_masyvas as $indeksas => $reiksme) {
+
+    $naujas_masyvas[$reiksme] = $antras_masyvas[$indeksas];
+
+}
+
+print_r($naujas_masyvas);
+
+//Tas pats sprendimas pasinaudojus funkcija array_combine
+
+$naujas_masyvas = array_combine($pirmas_masyvas, $antras_masyvas);
+
+print_r($naujas_masyvas);
+
+//Desimta uzduotis
+
+echo '<h1>Desimta uzduotis</h1>';
+
+$masyvas = [];
+
+for($i = 0; $i < 10; $i++) {
+
+    if($i < 2) {
+        $masyvas[] = rand(5, 25);
+    } else {
+        $masyvas[] = $masyvas[$i - 2] + $masyvas[$i - 1];
+    }
+
+}
+
+print_r($masyvas);
+
+
+//Vienuolikta uzduotis
+
+echo '<h1>Vienuolikta uzduotis</h1>';
+
+$i = 0;
+$masyvas = [];
+
+while($i < 101) {
+
+    $skaicius = rand(0, 300);
+
+    if(!in_array($skaicius, $masyvas)) {
+        $masyvas[] = $skaicius;
+        $i++;
+    }
+
+}
+
+//Ciklo aprasymas su for ciklu
+
+// for($i = 0; $i < 101; $i++) {
+
+//     $skaicius = rand(0, 300);
+
+//     if(!in_array($skaicius, $masyvas)) {
+//         $masyvas[] = $skaicius;
+//     } else {
+//         $i--;
+//     }
+
+// }
+
+rsort($masyvas);
+
+$ciklu_skaiciuotuvas = 1;
+
+while(true) {
+
+    $naujas_masyvas = [];
+    $pirma_dalis = 0;
+    $antra_dalis = 0;
+
+    //print_r($masyvas);
+
+    foreach($masyvas as $key => $val) {
+
+        if($key != 0) { 
+
+            if($pirma_dalis < $antra_dalis) {
+                array_unshift($naujas_masyvas, $val);
+                $pirma_dalis += $val;
+            } else {
+                array_push($naujas_masyvas, $val);
+                $antra_dalis += $val;
+                //$naujas_masyvas[] = $val;
+            }
+
+        } else {
+            $naujas_masyvas[] = $val;
+        }
+
+    }
+
+    $skirtumas = ($pirma_dalis > $antra_dalis) ? $pirma_dalis % $antra_dalis : $antra_dalis % $pirma_dalis;
+
+    $ciklu_skaiciuotuvas++;
+
+    if($skirtumas <= 30 && $naujas_masyvas[50] == $masyvas[0]) {
+        break;
+    }
+
+}
+
+echo "Uzduoti atlikti prireike $ciklu_skaiciuotuvas ciklu";
+echo 'Pirmos masyvos dalies suma: ' . $pirma_dalis . '<br />';
+echo 'Antros masyvos dalies suma: ' . $antra_dalis . '<br />';
 
 print_r($naujas_masyvas);
