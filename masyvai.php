@@ -48,8 +48,40 @@ for($i = 0; $i < 10; $i++) {
 
 }
 
+$masyvas[] = 12;
+
 print_r($masyvas);
 
+$skaiciuotuvas = 0;
+$didziausias   = 0;
+
+foreach($masyvas as $reiksme) {
+
+    if(is_array($reiksme)) {
+
+        foreach($reiksme as $sub) {
+
+            if($sub > 10)
+                $skaiciuotuvas++;
+
+            if($sub > $didziausias)
+                $didziausias = $sub;
+
+        }
+
+    }
+
+    if(is_int($reiksme)) {
+
+        if($reiksme > 10)
+            $skaiciuotuvas++;
+
+    }
+
+}
+
+echo 'Reiksmiu didesniu nei 10 yra: ' . $skaiciuotuvas . '<br />';
+echo 'Didziausia reiksme: ' . $didziausias . '<br />';
 
 //Masyvai
 
