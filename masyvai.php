@@ -48,9 +48,11 @@ for($i = 0; $i < 10; $i++) {
 
 }
 
-$masyvas[] = 12;
+//$masyvas[] = 12;
 
 print_r($masyvas);
+
+echo '<h2>Pirmos uzduoties A IR B</h2>';
 
 $skaiciuotuvas = 0;
 $didziausias   = 0;
@@ -82,6 +84,96 @@ foreach($masyvas as $reiksme) {
 
 echo 'Reiksmiu didesniu nei 10 yra: ' . $skaiciuotuvas . '<br />';
 echo 'Didziausia reiksme: ' . $didziausias . '<br />';
+
+//Pirmos uzduoties C
+
+echo '<h2>Pirmos uzduoties C</h2>';
+
+$sumuostas_masyvas = [];
+
+foreach($masyvas as $index => $value) {
+
+    //echo array_sum($value) . '<br />';
+
+    if(is_array($value)) {
+
+        foreach($value as $i => $n) {
+
+            if(isset($sumuostas_masyvas[$i])) {
+                $sumuostas_masyvas[$i] += $n;
+            } else {
+                $sumuostas_masyvas[$i] = $n;
+            }
+
+
+        }
+
+    }
+
+}
+
+print_r($sumuostas_masyvas);
+
+//Pirmos uzduoties D
+
+echo '<h2>Pirmos uzduoties D</h2>';
+
+foreach($masyvas as $i => $v) {
+
+    for($x = 0; $x < 2; $x++) {
+
+        $masyvas[$i][] = rand(5, 25);
+
+    }
+
+}
+
+//Pirmos uzduoties E
+
+echo '<h2>Pirmos uzduoties E</h2>';
+
+$sumuostas_masyvas = [];
+
+foreach($masyvas as $index => $value) {
+
+    //echo array_sum($value) . '<br />';
+
+    $suma = 0;
+
+    if(is_array($value)) {
+
+        foreach($value as $number) {
+
+            $suma += $number;
+
+        }
+
+    }
+
+    $sumuostas_masyvas[$index] = $suma; 
+
+}
+
+print_r($sumuostas_masyvas);
+
+echo '<br />';
+echo '<br />';
+echo '<br />';
+echo '<br />';
+echo '<br />';
+echo '<br />';
+echo '<br />';
+echo '<br />';
+echo '<br />';
+echo '<br />';
+echo '<br />';
+echo '<br />';
+echo '<br />';
+echo '<br />';
+echo '<br />';
+echo '<br />';
+echo '<br />';
+
 
 //Masyvai
 
