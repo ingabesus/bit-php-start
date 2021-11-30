@@ -51,8 +51,17 @@
 
                             <?php 
                                 for($i = 0; $i < 10; $i++) : 
-                                $pavadinimas = $_GET['prekes'][$i]['prekes_pavadinimas'];
-                                $skaicius = $_GET['prekes'][$i]['skaicius'];
+                                
+                                $pavadinimas = "";
+                                $skaicius    = ""; 
+
+                                if(isset($_GET['prekes'][$i]['prekes_pavadinimas'])) {
+                                    $pavadinimas = $_GET['prekes'][$i]['prekes_pavadinimas'];
+                                }
+
+                                if(isset($_GET['prekes'][$i]['skaicius'])) {
+                                    $skaicius = $_GET['prekes'][$i]['skaicius'];
+                                }
                             ?>
 
                             <div class="col-sm-9">
