@@ -57,8 +57,6 @@
                                                 echo '<td>' . $preke['skaicius'] . '</td>';
                                             echo '</tr>';
 
-                                        
-                                            
                                             }
 
                                             if( is_numeric($preke['skaicius']) ) {
