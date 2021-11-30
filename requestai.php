@@ -13,36 +13,74 @@
         <div class="container container-small">
             <main>
                 <div class="py-5 text-center">
-                <h2>Prekių administratorius</h2>
-                    <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
-                </div>
+                    <h2>Prekių administratorius</h2>
 
-                <?php
-                    ini_set('display_errors', true);
-                    error_reporting(E_ALL);
-                    //$_GET
-                    //$_POST
-                    //echo '<pre>';
-                    //print_r($_GET);
-                    //Sumuojame perduodamas reiksmes
+                    <div class="text-start">
+                        <?php
+                            ini_set('display_errors', true);
+                            error_reporting(E_ALL);
+                            //$_GET
+                            //$_POST
+                            //echo '<pre>';
+                            //print_r($_GET);
+                            //echo '</pre>';
+                            //Sumuojame perduodamas reiksmes
 
-                    if( isset($_GET['skaicius']) AND is_array($_GET['skaicius']) ) {
-
-                        $suma = 0;
-
-                        foreach($_GET['skaicius'] as $skaicius) {
+                            if( isset($_GET['prekes']) AND is_array($_GET['prekes']) 
+                                AND count($_GET['prekes']) > 0) :
+                            ?>
                             
-                            if(is_numeric($skaicius)) {
-                                $suma += $skaicius;
-                            }
+                            <table class="table">
+                                <thead>
+                                    <th>Prekės pavadinimas</th>
+                                    <th>Kiekis</th>
+                                </thead>
+                                <tbody>
 
-                        }
+                                <?php
+                                    $suma = 0;
+                                    
+                                    //echo '<pre>';
 
-                        echo 'Gautas rezultatas is visu laukeliu yra: ' . $suma;
+                                    foreach($_GET['prekes'] as $preke) {
+                                        
+                                        //print_r($preke);
+                                        
+                                        if( is_array($preke) ) {
 
-                    }
+                                            if($preke['prekes_pavadinimas'] != '' 
+                                                AND $preke['skaicius'] != '') {
+                                        
+                                        
+                                            echo '<tr>';
+                                                echo '<td>' . $preke['prekes_pavadinimas'] . '</td>';
+                                                echo '<td>' . $preke['skaicius'] . '</td>';
+                                            echo '</tr>';
 
-                ?>
+                                        
+                                            
+                                            }
+
+                                            if( is_numeric($preke['skaicius']) ) {
+                                                $suma += $preke['skaicius'];
+                                            }
+                                        
+                                        }
+
+                                    }
+
+                                ?>
+
+                                </tbody>
+                            </table>
+
+                            <?php echo '<p class="lead">Gautas rezultatas is visu laukeliu yra: ' . $suma . '</p>'; ?>
+                           
+                            <?php endif; ?>
+
+                    </div>
+                    
+                </div>
 
                 <div class="row">
                 <div class="col-lg-12">
