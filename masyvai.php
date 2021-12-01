@@ -156,6 +156,26 @@ foreach($masyvas as $index => $value) {
 
 print_r($sumuostas_masyvas);
 
+
+//Trecia uzduoti
+
+echo '<h2>Trecia uzduotis</h2>';
+
+$masyvas = [];
+$alfabetas = 'ABCDEFHIYJKLMNOGPRSTUVZ';
+
+for($i = 0; $i < 10; $i++) {
+
+    for($x = 0; $x < rand(2, 20); $x++) {
+
+        $masyvas[$i][] = $alfabetas[rand(0, strlen($alfabetas) - 1)];
+
+    }
+    asort($masyvas[$i]);
+}
+
+print_r($masyvas);
+
 echo '<br />';
 echo '<br />';
 echo '<br />';
