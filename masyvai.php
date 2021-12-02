@@ -2,6 +2,74 @@
 
 echo '<pre>';
 
+
+//Trecia uzduotis
+
+echo '<h2>Trecia uzduotis</h2>';
+
+$masyvas = [];
+$alfabetas = 'ABCDEFHIYJKLMNOGPRSTUVZ';
+
+for($i = 0; $i < 10; $i++) {
+
+    for($x = 0; $x < rand(2, 20); $x++) {
+
+        $masyvas[$i][] = $alfabetas[rand(0, strlen($alfabetas) - 1)];
+
+    }
+    asort($masyvas[$i]);
+}
+
+//print_r($masyvas);
+
+//Ketvirta uzduotis
+
+echo '<h2>Ketvirta uzduotis</h2>';
+
+asort($masyvas);
+
+$letter_k = [];
+
+foreach($masyvas as $key => $value) {
+
+    if(in_array('K', $value)) {
+
+        unset($masyvas[$key]);
+
+        $letter_k[] = $value;
+
+    }
+
+}
+
+asort($letter_k);
+
+$masyvas = array_merge($letter_k, $masyvas);
+
+
+
+
+// $isrusiuotas_masyvas = [];
+// $max = max($masyvas);
+// $temp = [];
+
+// foreach($masyvas as $child) {
+
+//     echo count($child) . '   ' . count($temp) . '   ' .   count($max) .'<br />';
+
+//     if(count($child) > count($temp)) {
+//         $isrusiuotas_masyvas[] = $child;
+//         //array_unshift($isrusiuotas_masyvas, $child);
+//     } 
+
+//     $temp = $child;
+
+// }
+
+// print_r($isrusiuotas_masyvas);
+
+
+
 $masyvas = [
     1,
     2 => [
@@ -176,7 +244,35 @@ for($i = 0; $i < 10; $i++) {
     asort($masyvas[$i]);
 }
 
-print_r($masyvas);
+//print_r($masyvas);
+
+//Ketvirta uzduotis
+
+echo '<h2>Ketvirta uzduotis</h2>';
+
+$isrusiuotas_masyvas = [];
+$max = max($masyvas);
+$temp = $max;
+
+foreach($masyvas as $child) {
+
+    echo count($child) . '   ' . count($temp) . '   ' .   count($max) .'<br />';
+
+    if(count($child) < count($temp)) {
+        array_unshift($isrusiuotas_masyvas, $child);
+    } else {
+        $isrusiuotas_masyvas[] = $child;
+    }
+
+    $temp = $child;
+
+}
+
+//print_r($isrusiuotas_masyvas);
+
+
+
+
 
 echo '<br />';
 echo '<br />';
