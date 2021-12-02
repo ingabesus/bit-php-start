@@ -17,50 +17,66 @@
 
                     <div class="text-start">
                         <?php
-                            ini_set('display_errors', true);
-                            error_reporting(E_ALL);
-                            //$_GET
-                            //$_POST
-                            //echo '<pre>';
-                            //print_r($_GET);
-                            //echo '</pre>';
+                            //PHP visu zinuciu atvaizdavimui naudokite:
+                            //ini_set('display_errors', true); 
+                            //error_reporting(E_ALL);
+
+                            //$_GET - Grazina is address bar linko paduotus parametrus
+                            //$_POST - Grazina siunciamus parametrus, kuriu jau nematome adress bar'e
+                            //$_REQUEST - Grazina visus siunciamus parametrus
+                        
                             //Sumuojame perduodamas reiksmes
+
+                            //print_r($_GET);
 
                             if( isset($_GET['prekes']) AND is_array($_GET['prekes']) 
                                 AND count($_GET['prekes']) > 0) :
+
+                            $prekes = $_GET['prekes'];
+
+                            // if($_GET['rusiavimas'] == 1) {
+                            //     print_r(array_column($prekes, 'prekes_pavadinimas'));
+                            // }
+
                             ?>
                             
                             <table class="table">
                                 <thead>
                                     <th>Prekės pavadinimas</th>
+                                    <th>Kaina</th>
                                     <th>Kiekis</th>
                                 </thead>
                                 <tbody>
 
                                 <?php
+                                    $kiekis = 0;
                                     $suma = 0;
                                     
                                     //echo '<pre>';
 
-                                    foreach($_GET['prekes'] as $preke) {
+                                    foreach($prekes as $preke) {
                                         
                                         //print_r($preke);
                                         
                                         if( is_array($preke) ) {
 
-                                            if($preke['prekes_pavadinimas'] != '' 
-                                                AND $preke['skaicius'] != '') {
+                                            if($preke['prekes_pavadinimas'] != '') {
                                         
                                         
                                             echo '<tr>';
                                                 echo '<td>' . $preke['prekes_pavadinimas'] . '</td>';
-                                                echo '<td>' . $preke['skaicius'] . '</td>';
+                                                echo '<td>' . $preke['kaina'] . '</td>';
+                                                echo '<td>' . $preke['kiekis'] . '</td>';
                                             echo '</tr>';
 
                                             }
 
-                                            if( is_numeric($preke['skaicius']) ) {
-                                                $suma += $preke['skaicius'];
+                                            if( is_numeric($preke['kiekis']) ) {
+                                                $kiekis += $preke['kiekis'];
+                                            }
+
+                                            if( is_numeric($preke['kaina']) ) {
+                                                $suma += $preke['kaina'];
                                             }
                                         
                                         }
@@ -72,7 +88,8 @@
                                 </tbody>
                             </table>
 
-                            <?php echo '<p class="lead">Gautas rezultatas is visu laukeliu yra: ' . $suma . '</p>'; ?>
+                            <?php echo '<p class="lead">Bendras uzsakytu prekiu kiekis: ' . $kiekis . '</p>'; ?>
+                            <?php echo '<p class="lead">Bendra uzsakytu prekiu suma: ' . $suma . '</p>'; ?>
                            
                             <?php endif; ?>
 
@@ -83,33 +100,42 @@
                 <div class="row">
                 <div class="col-lg-12">
                     <form method="GET" action="">
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <select name="rusiavimas" class="form-select">
+                                    <option value="0">Pasirinkite rušiavimo būdą:</option>
+                                    <option value="1">Rusiuoti pagal pavadinima</option>
+                                    <option value="2">Rusiuoti pagal kieki</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="row g-3">
 
                             <?php 
                                 for($i = 0; $i < 10; $i++) : 
-                                
-                                $pavadinimas = "";
-                                $skaicius    = ""; 
 
-                                if(isset($_GET['prekes'][$i]['prekes_pavadinimas'])) {
-                                    $pavadinimas = $_GET['prekes'][$i]['prekes_pavadinimas'];
-                                }
+                                $pavadinimas = isset($_GET['prekes'][$i]['prekes_pavadinimas']) ? $_GET['prekes'][$i]['prekes_pavadinimas'] : '';
+                                $kaina = isset($_GET['prekes'][$i]['kaina']) ? $_GET['prekes'][$i]['kaina'] : '0';
+                                $kiekis = isset($_GET['prekes'][$i]['kiekis']) ? $_GET['prekes'][$i]['kiekis'] : '0';
 
-                                if(isset($_GET['prekes'][$i]['skaicius'])) {
-                                    $skaicius = $_GET['prekes'][$i]['skaicius'];
-                                }
                             ?>
 
-                            <div class="col-sm-9">
+                            <div class="col-sm-8">
                                 <label class="form-label">Prekės pavadinimas</label>
                                 <input type="text" class="form-control" 
                                 name="prekes[<?php echo $i; ?>][prekes_pavadinimas]" 
                                 value="<?php echo $pavadinimas; ?>" />
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-2">
+                                <label class="form-label">Prekės kainą</label>
+                                <input type="text" class="form-control" 
+                                name="prekes[<?php echo $i; ?>][kaina]" 
+                                value="<?php echo $kaina; ?>" />
+                            </div>
+                            <div class="col-sm-2">
                                 <label class="form-label">Prekių kiekis</label>
-                                <input type="number" name="prekes[<?php echo $i; ?>][skaicius]" 
-                                class="form-control" value="<?php echo $skaicius; ?>" />
+                                <input type="number" name="prekes[<?php echo $i; ?>][kiekis]" 
+                                class="form-control" value="<?php echo $kiekis; ?>" />
                             </div>
 
                             <?php endfor; ?>
