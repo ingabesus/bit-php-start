@@ -33,10 +33,12 @@
                                 AND count($_GET['prekes']) > 0) :
 
                             $prekes = $_GET['prekes'];
+                            //$nuolaida = $_GET['nuolaida'];
 
-                            // if($_GET['rusiavimas'] == 1) {
-                            //     print_r(array_column($prekes, 'prekes_pavadinimas'));
-                            // }
+                            if($_GET['rusiavimas'] == 1) {
+                                $sort_by = array_column($prekes, 'prekes_pavadinimas');
+                                array_multisort($sort_by, SORT_ASC, $prekes);
+                            }
 
                             ?>
                             

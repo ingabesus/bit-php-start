@@ -2,6 +2,100 @@
 
 echo '<pre>';
 
+//Penkta uzduotis
+
+echo '<h2>Penkta uzduotis</h2>';
+
+$masyvas = [];
+//$masyvas[] = ['user_id' => '99', 'place_in_row' => rand(0, 100)];
+
+for($i = 0; $i < 30; $i++) {
+
+    $user_id = rand(1, 1000000);
+    $exists  = false;
+
+    foreach($masyvas as $m) {
+
+        if($m['user_id'] == $user_id)
+            $exists  = true;
+            
+    }
+
+    if( !$exists ) {
+        
+        $masyvas[] = ['user_id' => $user_id, 'place_in_row' => rand(0, 100)];
+    
+    }
+
+}
+
+//print_r($masyvas);
+
+//Sesta uzduotis
+
+echo '<h2>Sesta uzduotis</h2>';
+
+$alfabetas = 'ABCDEFHIYJKLMNOGPRSTUVZ';
+
+foreach($masyvas as $index => $value) {
+
+    $name = '';
+    $surname = '';
+
+    for($i = 1; $i <= rand(5, 15); $i++) {
+        $name .= $alfabetas[rand(0, strlen($alfabetas) - 1)];
+    }
+
+    for($i = 1; $i <= rand(5, 15); $i++) {
+        $surname .= $alfabetas[rand(0, strlen($alfabetas) - 1)];
+    }
+
+    $masyvas[$index]['name'] = ucfirst(strtolower($name));
+    $masyvas[$index]['surname'] = ucfirst(strtolower($surname));
+
+}
+
+//print_r($masyvas);
+
+//Septinta uzduotis
+
+echo '<h2>Septinta uzduotis</h2>';
+
+$x = [];
+
+foreach($masyvas as $index => $value) {
+
+    $x[$index] = $value['user_id'];
+
+}
+
+//Tas pats metodas tik pasinaudojant funkcija
+
+$x = array_column($masyvas, 'user_id');
+
+//print_r($x);
+
+array_multisort($x, SORT_ASC, $masyvas); 
+//Isrusiuoja masyva ir grazina atsakyma ar pavyko ar ne. True arba false
+
+//SORT_ASC - rusiavimas didejancia tvarka
+//SORT_DESC - rusiavimas mazejancia tvarka 
+
+//print_r($masyvas);
+
+$y = [];
+
+foreach($masyvas as $index => $value) {
+
+    $y[$index] = $value['place_in_row'];
+
+}
+
+$y = array_column($masyvas, 'place_in_row');
+
+array_multisort($y, SORT_DESC, $masyvas); 
+
+print_r($masyvas);
 
 //Trecia uzduotis
 
