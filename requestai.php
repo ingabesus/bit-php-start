@@ -1,3 +1,4 @@
+<?php require('./includes/functions.php'); ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -29,8 +30,7 @@
 
                             //print_r($_GET);
 
-                            if( isset($_GET['prekes']) AND is_array($_GET['prekes']) 
-                                AND count($_GET['prekes']) > 0) :
+                            if( is_array_element($_GET['prekes']) ) :
 
                             $prekes = $_GET['prekes'];
                             //$nuolaida = $_GET['nuolaida'];
