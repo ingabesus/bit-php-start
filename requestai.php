@@ -1,4 +1,8 @@
-<?php require('./includes/functions.php'); ?>
+<?php require('./includes/sessions.php'); ?>
+<?php require('./includes/functions.php'); 
+
+$_SESSION['REQUESTAI'] = 'Testuojam is puslapio i puslapi';
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -25,7 +29,8 @@
                             //$_GET - Grazina is address bar linko paduotus parametrus
                             //$_POST - Grazina siunciamus parametrus, kuriu jau nematome adress bar'e
                             //$_REQUEST - Grazina visus siunciamus parametrus
-                        
+                            //$_SESSION - Issaugo COOKIES duomenis
+
                             //Sumuojame perduodamas reiksmes
 
                             //print_r($_GET);
@@ -34,7 +39,7 @@
 
                             $prekes = $_GET['prekes'];
                             //$nuolaida = $_GET['nuolaida'];
-
+                            
                             if($_GET['rusiavimas'] == 1) {
                                 $sort_by = array_column($prekes, 'prekes_pavadinimas');
                                 array_multisort($sort_by, SORT_ASC, $prekes);

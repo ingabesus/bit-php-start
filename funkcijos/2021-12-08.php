@@ -1,5 +1,7 @@
 <?php 
 
+require('../includes/sessions.php');
+
 //Trecia uzduotis
 
 function headingas($tekstas, $tagas) {
@@ -52,6 +54,12 @@ echo '<pre>';
 print_r($skaiciu_masyvas);
 
 
-if(sveiki_skaiciai(350) == 0)
-    unset();
 
+
+function kartojimas() {
+
+    kartojimas();
+
+}
+
+print_r($_SESSION);
