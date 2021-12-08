@@ -31,4 +31,27 @@ function sveiki_skaiciai(int $skaicius) {
     return $skaiciuotuvas;
 }
 
-echo sveiki_skaiciai(186);
+//Penkta uzduotis
+
+echo headingas('Penkta uzduotis', 1);
+
+$skaiciu_masyvas = [];
+$funkcijos_masyvas = [];
+
+for($i = 0; $i < 100; $i++) {
+    
+    $skaicius = rand(33, 77);
+    $skaiciu_masyvas[] = $skaicius;
+    $funkcijos_masyvas[] = sveiki_skaiciai($skaicius);
+
+}
+
+array_multisort($funkcijos_masyvas, SORT_ASC, $skaiciu_masyvas);
+
+echo '<pre>';
+print_r($skaiciu_masyvas);
+
+
+if(sveiki_skaiciai(350) == 0)
+    unset();
+
