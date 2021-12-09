@@ -27,9 +27,9 @@ if( !function_exists('is_param_equal') ) {
     //     return false;
     // }
 
-    function is_param_equal($param, $param2) {
+    function is_param_equal($method, $key, $comparison) {
         
-        return (isset($param['login']) && $param['login'] ==  $param2) ? true : false;
+        return (isset($method[$key]) && $method[$key] ==  $comparison) ? true : false;
 
     }
 
