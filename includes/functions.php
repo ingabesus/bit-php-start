@@ -1,12 +1,11 @@
 <?php
 
-if( !function_exists('is_array_element') ) {
-
+if( !function_exists('prekes_exists') ) {
 
     //Ar $element atitinka kondicija ar ne
-    function is_array_element($element) {
+    function prekes_exists() {
 
-        if( isset($element) AND is_array($element) AND count($element) > 0) {
+        if( isset($_GET['prekes']) AND is_array($_GET['prekes']) AND count($_GET['prekes']) > 0) {
             return true; // break; cikle
         }
 

@@ -59,8 +59,8 @@ print_r($_SESSION);
 
                             //print_r($_GET);
 
-                            if( is_array_element($_GET['prekes']) ) :
-
+                            if( prekes_exists() ) :
+                                    
                             $prekes = $_GET['prekes'];
                             //$nuolaida = $_GET['nuolaida'];
                             
