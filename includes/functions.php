@@ -16,3 +16,22 @@ if( !function_exists('is_array_element') ) {
     //true arba false
 
 }
+
+if( !function_exists('is_param_equal') ) {
+
+    // function is_param_equal($param, $param2) {
+
+    //     if(isset($param) && $param ==  $param2) {
+    //         return true;
+    //     }
+
+    //     return false;
+    // }
+
+    function is_param_equal($param, $param2) {
+        
+        return (isset($param['login']) && $param['login'] ==  $param2) ? true : false;
+
+    }
+
+}

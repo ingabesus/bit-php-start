@@ -2,7 +2,31 @@
 <?php require('./includes/functions.php'); 
 
 $_SESSION['REQUESTAI'] = 'Testuojam is puslapio i puslapi';
+
+$auth = [
+    'login' => 'admin@php.lt',
+    'password' => 'labas1234'
+];
+
+//if(isset($_GET['login']) && $_GET['login'] ==  $auth['login']) {
+if(is_param_equal($_GET, $auth['login'])) {
+
+    filter_var($_POST['login'], FILTER_VALIDATE_EMAIL); // true arba false
+    
+    if(md5($_GET['password']) == md5($auth['password'])) {
+
+        $_SESSION['logged_in'] = true;
+        $_SESSION['user'] = $auth['login'];
+
+    }
+
+}
+
+print_r($_SESSION);
+
 ?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
