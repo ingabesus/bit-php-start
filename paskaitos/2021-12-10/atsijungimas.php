@@ -41,12 +41,22 @@ if( is_param_equal($_POST, 'login', 1) ) { //Tikriname su funkcija aprasyta 12-o
 
 }
 
+//if(isset($_POST['logout']) && $_POST['logout'] == 1) { 
+
+if( is_param_equal($_POST, 'logout', 1) ) { 
+
+    session_destroy();
+    header('Location: ./atsijungimas.php');
+
+}
+
 //Jeigu $_SESSION['logged_in'] silirtas ir turi reiksme true, tuomet prie kintamojo priskiriam reiksme true
 if(isset($_SESSION['logged_in']) AND $_SESSION['logged_in']) {
 
     $logged_in = true;
 
 }
+
 
 //Tikriname ar varotojas prisijunges, jeigu ne rodome login forma
 if(!$logged_in) : ?>
@@ -74,6 +84,13 @@ if(!$logged_in) : ?>
     <h1>Sekmingai prisijungete</h1>
 
     Sveiki, <?php echo $_SESSION['user']; ?>
+
+    <div>
+        <form method="POST">
+            <input type="hidden" name="logout" value="1" />
+            <button type="submit">Atsijungti</button>
+        </form> 
+    </div>
 
                 
 <?php endif; ?>
