@@ -29,16 +29,13 @@ if(isset($_GET['action']) AND $_GET['action'] == 'sukurti_masyva') {
 
 if(isset($_GET['action']) AND $_GET['action'] == 'atvaizduoti_masyva') {
 
-    // echo filesize($target);
+    $failas = fopen($target, 'r');
+    $json = fread($failas, filesize($target));
+    fclose($failas);
 
-    // $json = fread($failas, filesize($target));
-
-    // echo $json;
-
-    // fclose($failas);
-
-
-    $json = file_get_contents($target);
+    //file_get_contents() failu atidarymo variantas
+    //$json = file_get_contents($target);
+    
     //echo $json;
     //I STD Tipo masyva dekodintas JSON stringas
     //$std = json_decode($json);
