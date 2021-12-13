@@ -20,7 +20,14 @@ if(isset($_GET['action']) AND $_GET['action'] == 'sukurti_masyva') {
 
     //JSON 
     $json = json_encode($masyvas);
+
+    //file_put_contents() funkcija tam paciam atlikimui
+    // if( file_put_contents($target, $json) ) {
+    //     echo 'Sekmingai irasytas stringas i faila';
+    // }
+
     $failas = fopen($target, 'w');
+
     if( fwrite($failas, $json) ) {
         echo 'Sekmingai irasytas stringas i faila';
     }
