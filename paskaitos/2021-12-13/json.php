@@ -1,28 +1,59 @@
 <?php
 
-$masyvas = [
-    'indeksas' => [
-        'masyvas' => [1, 2, 3]
-    ]
-];
+$target = './db.json';
 
-//JSON 
-//echo '<pre>';
-//print_r($masyvas);
-$json = json_encode($masyvas);
+//Masyvo sugeneravimas
 
-$failas = fopen('./db.json', 'w');
-if( fwrite($failas, $json) ) {
-    echo 'Sekmingai irasytas stringas i faila';
+if(isset($_GET['action']) AND $_GET['action'] == 'sukurti_masyva') {
+
+    $masyvas = [];
+
+    for($i = 0; $i < 100; $i++) {
+
+        for($x = 0; $x < rand(5, 20); $x++) {
+
+            $masyvas[$i][] = rand(99, 11500);
+
+        }
+
+    }
+
+    //JSON 
+    $json = json_encode($masyvas);
+    $failas = fopen($target, 'w');
+    if( fwrite($failas, $json) ) {
+        echo 'Sekmingai irasytas stringas i faila';
+    }
+
 }
 
-//I STD Tipo masyva dekodintas JSON stringas
-$std = json_decode($json);
-//echo $std->indeksas->masyvas[0];
+if(isset($_GET['action']) AND $_GET['action'] == 'atvaizduoti_masyva') {
 
-//I Asociatyvaus Tipo masyva dekodintas JSON stringas
-$json = json_decode($json, true);
+    // echo filesize($target);
+
+    // $json = fread($failas, filesize($target));
+
+    // echo $json;
+
+    // fclose($failas);
 
 
-//echo '<pre>';
-//print_r($json);
+    $json = file_get_contents($target);
+    //echo $json;
+    //I STD Tipo masyva dekodintas JSON stringas
+    //$std = json_decode($json);
+    //echo $std->indeksas->masyvas[0];
+
+    //I Asociatyvaus Tipo masyva dekodintas JSON stringas
+    $json = json_decode($json, true);
+
+
+    echo '<pre>';
+    print_r($json);
+
+}
+
+?>
+
+<a href="?action=sukurti_masyva">Sukurti masyvą</a>
+<a href="?action=atvaizduoti_masyva">Atvaizduoti masyva</a>
