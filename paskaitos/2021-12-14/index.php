@@ -3,21 +3,33 @@ define('BASE_DIR', __DIR__);
 
 if( isset($_GET['prekes']) ) {
 
-    $db = file_get_contents('./db.json');
+    if(
+        $_GET['prekes']['prekes_pavadinimas'] != '' AND
+        $_GET['prekes']['kaina'] != '' AND
+        $_GET['prekes']['kiekis'] != ''
+    ) {
 
-    $db = json_decode($db); 
+        $db = file_get_contents('./db.json');
 
-    $prekes = $_GET['prekes'];
+        $db = json_decode($db); 
 
-    if($db) {
-        $prekes = array_merge($db, $prekes);
+        $prekes = $_GET['prekes'];
+
+        if($db) {
+            $prekes = array_merge($db, $prekes);
+        }
+
+        $json = json_encode($prekes);
+
+        file_put_contents('./db.json', $json);
+
+        header('Location: index.php?status=1');
+
+    } else {
+
+        header('Location: index.php?status=2');
+
     }
-
-    $json = json_encode($prekes);
-
-    file_put_contents('./db.json', $json);
-
-    header('Location: index.php?status=1');
 
 }
 
@@ -38,13 +50,21 @@ if( isset($_GET['prekes']) ) {
             <main>  
                 <h1>Prekiu pridėjimas</h1>
 
-                <div class="alert alert-success" role="alert">
                     <?php
-                        if( isset($_GET['status']) AND $_GET['status'] == 1) {
-                            echo 'Prekės sėkmingai pridėtos';
-                        }
+                        if( isset($_GET['status']) AND $_GET['status'] == 1) :
                     ?>
-                </div>
+                        <div class="alert alert-success" role="alert">
+                            <?php echo 'Prekės sėkmingai pridėtos'; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php
+                        if( isset($_GET['status']) AND $_GET['status'] == 2) :
+                    ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo 'Neužpildyti formos laukeliai'; ?>
+                        </div>
+                    <?php endif; ?>
 
                 <div class="row">
                     <div class="col-lg-12">
@@ -54,16 +74,16 @@ if( isset($_GET['prekes']) ) {
                                 <div class="col-sm-8">
                                     <label class="form-label">Prekės pavadinimas</label>
                                     <input type="text" class="form-control" 
-                                    name="prekes[][prekes_pavadinimas]" value="" />
+                                    name="prekes[prekes_pavadinimas]" value="" />
                                 </div>
                                 <div class="col-sm-2">
                                     <label class="form-label">Prekės kainą</label>
                                     <input type="text" class="form-control" 
-                                    name="prekes[][kaina]" value="" />
+                                    name="prekes[kaina]" value="" />
                                 </div>
                                 <div class="col-sm-2">
                                     <label class="form-label">Prekių kiekis</label>
-                                    <input type="number" name="prekes[][kiekis]" 
+                                    <input type="number" name="prekes[kiekis]" 
                                     class="form-control" value="" />
                                 </div>
                             </div>
