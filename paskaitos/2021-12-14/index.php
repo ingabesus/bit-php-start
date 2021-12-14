@@ -1,20 +1,23 @@
 <?php 
 define('BASE_DIR', __DIR__);
 
-if( isset($_GET['prekes']) ) {
+//CRUD - Create, Read, Update, Delete
+$db = file_get_contents('./db.json');
+$db = json_decode($db, true); 
 
+if( isset($_POST['prekes']) ) {
     if(
-        $_GET['prekes']['prekes_pavadinimas'] != '' AND
-        $_GET['prekes']['kaina'] != '' AND
-        $_GET['prekes']['kiekis'] != ''
+        $_POST['prekes']['prekes_pavadinimas'] != '' AND
+        $_POST['prekes']['kaina'] != '' AND
+        $_POST['prekes']['kiekis'] != ''
     ) {
 
         $db = file_get_contents('./db.json');
 
         $db = json_decode($db); 
 
-        $prekes = $_GET['prekes'];
-
+        $prekes = [$_POST['prekes']];
+        
         if($db) {
             $prekes = array_merge($db, $prekes);
         }
@@ -33,6 +36,26 @@ if( isset($_GET['prekes']) ) {
 
 }
 
+if( isset($_GET['action']) AND $_GET['action'] == 'delete') {
+
+    if( isset($_GET['id']) ) {
+
+        $id = $_GET['id'];
+
+        $db = json_decode( file_get_contents('./db.json'), true);
+
+        unset($db[$id]);
+
+        if( file_put_contents( './db.json', json_encode($db) ) ) {
+            header('Location: index.php?status=3');
+        } else {
+            header('Location: index.php?status=4');
+        }
+        
+    }
+
+}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -47,8 +70,12 @@ if( isset($_GET['prekes']) ) {
   </head>
   <body class="bg-light">
         <div class="container container-small">
-            <main>  
-                <h1>Prekiu pridėjimas</h1>
+            
+        <main>  
+
+                <div class="py-5 text-center">
+
+                    <h2>Prekiu pridėjimas</h2>
 
                     <?php
                         if( isset($_GET['status']) AND $_GET['status'] == 1) :
@@ -66,9 +93,57 @@ if( isset($_GET['prekes']) ) {
                         </div>
                     <?php endif; ?>
 
+                    <?php
+                        if( isset($_GET['status']) AND $_GET['status'] == 3) :
+                    ?>
+                        <div class="alert alert-success" role="alert">
+                            <?php echo 'Prekė sėkmingai ištrinta'; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php
+                        if( isset($_GET['status']) AND $_GET['status'] == 4) :
+                    ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo 'Įvyko klaida'; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <div class="text-start">
+                        
+                        <table class="table">
+                            <thead>
+                                <th>ID</th>
+                                <th>Prekės pavadinimas</th>
+                                <th>Kaina</th>
+                                <th>Kiekis</th>
+                                <th></th>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    $db = json_decode( file_get_contents('./db.json'), true);
+                                    foreach($db as $id => $reiksme) :
+                                ?>
+                                    <tr>
+                                        <td><?php echo $id; ?></td>
+                                        <td><?php echo $reiksme['prekes_pavadinimas']; ?></td>
+                                        <td><?php echo $reiksme['kaina']; ?></td>
+                                        <td><?php echo $reiksme['kiekis']; ?></td>
+                                        <td>
+                                            <a href="index.php?action=delete&id=<?php echo $id; ?>" class="btn btn-danger">Ištrinti</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    
+                    </div>
+                </div>
+                
+
                 <div class="row">
                     <div class="col-lg-12">
-                        <form method="GET" action="">
+                        <form method="POST" action="">
                             <div class="row g-3">
 
                                 <div class="col-sm-8">
