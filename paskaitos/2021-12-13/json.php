@@ -98,8 +98,46 @@ if(isset($_GET['action']) AND $_GET['action'] == 'filtruoti_masyva') {
 
 }
 
+if(isset($_GET['action']) AND $_GET['action'] == 'prideti_masyvu') {
+
+    // $json = file_get_contents($target);
+    // $json = json_decode($json);
+
+    $json = open_db_file($target);
+
+    foreach($json as $key => $val) {
+
+        foreach($val as $kchild => $kval) {
+
+            if($kval < 500) {
+
+                $masyvas = [];
+
+                for($i = 0; $i < rand(3, 500); $i++) {
+
+                    $masyvas[] = rand(500, 6500); 
+
+                } 
+
+                $json[$key][$kchild] = $masyvas;
+
+            }
+
+        }
+
+    }
+
+    $json = json_encode($json);
+
+    if( file_put_contents($target, $json) ) {
+        echo 'Sekmingai isfiltravote JSON stringa';
+    }
+
+}
+
 ?>
 
 <a href="?action=sukurti_masyva">Sukurti masyvą</a>
 <a href="?action=atvaizduoti_masyva">Atvaizduoti masyva</a>
 <a href="?action=filtruoti_masyva">Filtruoti masyva</a>
+<a href="?action=prideti_masyvu">Prideti masyvu</a>
