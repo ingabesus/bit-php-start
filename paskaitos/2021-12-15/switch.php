@@ -60,3 +60,13 @@ switch($reiksme) {
     default:
         echo 'Skaicius yra daugiau nei penkti';
 }
+
+?>
+
+<select name="reiksme">
+    <option value="1">Vienas</option>
+    <option value="2">Du</option>
+    <option value="3">Trys</option>
+    <option value="4">Keturi</option>
+    <option value="5">Penki</option>
+</select>
