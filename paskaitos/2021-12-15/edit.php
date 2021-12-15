@@ -24,9 +24,9 @@
             $db[$id]['kiekis'] = $_POST['preke']['kiekis'];
             
             if( file_put_contents( './db.json', json_encode($db) ) ) {
-                header('Location: ./index.php?status=5');
+                header('Location: ./index.php?status=1&message=5');
             } else {
-                header('Location: ./index.php?status=4');
+                header('Location: ./index.php?status=2&message=4');
             }
         }
 

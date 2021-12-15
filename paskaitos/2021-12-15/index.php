@@ -1,6 +1,33 @@
 <?php 
 define('BASE_DIR', __DIR__);
 
+function message($status, $message) {
+
+    $messages = [
+        1 => 'Prekės sėkmingai pridėtos',
+        2 => 'Neužpildyti formos laukeliai',
+        3 => 'Prekė sėkmingai ištrinta',
+        4 => 'Įvyko klaida',
+        5 => 'Prekė sėkmingai iššsaugota'
+    ];    
+
+    //Statusas 1 arba 2. 1 reiskia sekminga veiksma. 2 Reiskia nesekme.
+    $klase = 'success';
+
+    if($status == 2) {
+        $klase = 'danger';
+    }
+
+    echo '<div class="alert alert-'.$klase.'" role="alert">';
+    echo $messages[$message];
+    echo '</div>';
+}
+
+if( isset($_GET['action']) AND $_GET['action'] == 'test' ){
+    echo 'Mygtukas paspaustas.';
+    exit();
+} 
+
 //CRUD - Create, Read, Update, Delete
 $db = file_get_contents('./db.json');
 $db = json_decode($db, true); 
@@ -26,11 +53,11 @@ if( isset($_POST['prekes']) ) {
 
         file_put_contents('./db.json', $json);
 
-        header('Location: index.php?status=1');
+        header('Location: index.php?status=1&message=1');
 
     } else {
 
-        header('Location: index.php?status=2');
+        header('Location: index.php?status=2&message=2');
 
     }
 
@@ -47,9 +74,9 @@ if( isset($_GET['action']) AND $_GET['action'] == 'delete') {
         unset($db[$id]);
 
         if( file_put_contents( './db.json', json_encode($db) ) ) {
-            header('Location: index.php?status=3');
+            header('Location: index.php?status=1&message=3');
         } else {
-            header('Location: index.php?status=4');
+            header('Location: index.php?status=2&message=4');
         }
         
     }
@@ -75,47 +102,15 @@ if( isset($_GET['action']) AND $_GET['action'] == 'delete') {
 
                 <div class="py-5 text-center">
 
+                    <a href="#" class="w-100 btn btn-primary btn-lg" id="mygtukas">Siųsti GET requestą</a>
+                    <div id="response"></div>
                     <h2>Prekiu pridėjimas</h2>
 
                     <?php
-                        if( isset($_GET['status']) AND $_GET['status'] == 1) :
+                        if( isset($_GET['status']) AND isset($_GET['message'])) {
+                            message($_GET['status'], $_GET['message']);
+                        }
                     ?>
-                        <div class="alert alert-success" role="alert">
-                            <?php echo 'Prekės sėkmingai pridėtos'; ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php
-                        if( isset($_GET['status']) AND $_GET['status'] == 2) :
-                    ?>
-                        <div class="alert alert-danger" role="alert">
-                            <?php echo 'Neužpildyti formos laukeliai'; ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php
-                        if( isset($_GET['status']) AND $_GET['status'] == 3) :
-                    ?>
-                        <div class="alert alert-success" role="alert">
-                            <?php echo 'Prekė sėkmingai ištrinta'; ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php
-                        if( isset($_GET['status']) AND $_GET['status'] == 4) :
-                    ?>
-                        <div class="alert alert-danger" role="alert">
-                            <?php echo 'Įvyko klaida'; ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php
-                        if( isset($_GET['status']) AND $_GET['status'] == 5) :
-                    ?>
-                        <div class="alert alert-success" role="alert">
-                            <?php echo 'Prekė sėkmingai iššsaugota'; ?>
-                        </div>
-                    <?php endif; ?>
 
                     <div class="text-start">
                         
@@ -152,22 +147,22 @@ if( isset($_GET['action']) AND $_GET['action'] == 'delete') {
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <form method="POST" action="">
+                        <form method="POST" action="" id="prekesIkelimas">
                             <div class="row g-3">
 
                                 <div class="col-sm-8">
                                     <label class="form-label">Prekės pavadinimas</label>
-                                    <input type="text" class="form-control" 
+                                    <input type="text" id="prekesPavadinimas" class="form-control" 
                                     name="prekes[prekes_pavadinimas]" value="" />
                                 </div>
                                 <div class="col-sm-2">
                                     <label class="form-label">Prekės kainą</label>
-                                    <input type="text" class="form-control" 
+                                    <input type="text" id="prekesKaina" class="form-control" 
                                     name="prekes[kaina]" value="" />
                                 </div>
                                 <div class="col-sm-2">
                                     <label class="form-label">Prekių kiekis</label>
-                                    <input type="number" name="prekes[kiekis]" 
+                                    <input type="number" id="prekesKiekis" name="prekes[kiekis]" 
                                     class="form-control" value="" />
                                 </div>
                             </div>
@@ -181,5 +176,6 @@ if( isset($_GET['action']) AND $_GET['action'] == 'delete') {
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="assets/js/custom.js"></script>
     </body>
 </html>
