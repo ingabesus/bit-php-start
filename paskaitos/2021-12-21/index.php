@@ -18,7 +18,7 @@ class Test {
         $this->name = $name;
     }
 
-    private function getName() {
+    public function getName() {
         //$this->setName();
         return $this->name;
     }
