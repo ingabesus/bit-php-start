@@ -11,7 +11,7 @@ class Test {
 
     //Savybes | Properties
     public $name;
-    public  $surname;
+    public $surname;
 
     //Construct methodas pasileidzia vos tik iniciavus klase
     //__destruct()
