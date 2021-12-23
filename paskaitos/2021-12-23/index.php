@@ -10,8 +10,8 @@ $fields = [
 
 $post = [
     'prekes_pavadinimas' => 'citrina',
-    'kaina' => '10',
-    'kiekis' => '2'
+    'kaina' => 10,
+    'kiekis' => 2
 ];
 
 
@@ -50,12 +50,35 @@ class Validator {
 
     public function process_fields() {
 
+        $rezultatas = true;
+
         foreach($this->fields as $key => $val) {
 
-            if( $this->process_field($key, $this->post) ) 
-                echo $key . '<br />';
+            if( $this->process_field($key, $this->post) ) {
+
+                //echo $this->post[$key] . '<br />';
+                //if kondicijos
+                switch($val) {
+                    
+                    case 'text': 
+                        if( !is_string($this->post[$key]) )
+                            $rezultatas = false;
+                    break;
+
+                    case 'int': 
+                        if( !is_integer($this->post[$key]) )
+                            $rezultatas = false;
+                    break;
+
+                }
+
+                //echo $reiksme;
+ 
+            }
 
         }
+
+        return $rezultatas;
 
     }
 
@@ -67,6 +90,10 @@ class Validator {
 
 //new Validator($_POST['prekes'], $fields);
 $objektas = new Validator($post, $fields);
+
+if($objektas->process_fields()) {
+    echo 'Yra';
+}
 
 //print_r($objektas);
 
