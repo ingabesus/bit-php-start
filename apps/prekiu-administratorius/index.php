@@ -3,7 +3,6 @@ define('BASE_DIR', __DIR__);
 
 require(BASE_DIR . '/includes/functions.php'); 
 require(BASE_DIR . '/includes/auth.php'); 
-
 //unset($_SESSION['logged_in']);
 
 //$loged_in == $_SESSION['logged_in']
