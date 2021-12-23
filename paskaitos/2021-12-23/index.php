@@ -15,7 +15,6 @@ $post = [
 ];
 
 
-
 class Validator {
 
     // const FIELDS = [
@@ -56,7 +55,6 @@ class Validator {
             if( $this->process_field($key, $this->post) ) 
                 echo $key . '<br />';
 
-            
         }
 
     }
@@ -71,3 +69,5 @@ class Validator {
 $objektas = new Validator($post, $fields);
 
 //print_r($objektas);
+
+//MVC 
