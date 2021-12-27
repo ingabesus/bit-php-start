@@ -48,6 +48,12 @@ class Validator {
         
     }
 
+    public function test() {
+
+        print_r($this->post);
+
+    }
+
     public function process_fields() {
 
         $rezultatas = true;
@@ -94,6 +100,8 @@ $objektas = new Validator($post, $fields);
 if($objektas->process_fields()) {
     echo 'Yra';
 }
+
+$objektas->test();
 
 //print_r($objektas);
 
