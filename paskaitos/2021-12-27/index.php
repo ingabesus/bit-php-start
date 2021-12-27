@@ -1,18 +1,8 @@
 <?php
 
-class Index {
-
-    public function __construct() {
-
-    }
-
-    public function atspausdinimas() { //override
-
-        echo 'Ant kaledines eglutes';
-
-    }
-
-}
+spl_autoload_register(function () {
+    include './classes/index.php';
+});
 
 class Extern extends Index {
 
@@ -24,8 +14,6 @@ class Extern extends Index {
 
 }
 
-$index = new Index();
-$extern = new Extern();
-
+$extern = new extern();
+//$extern->atspausdinimas();
 $extern->atspausdinimas();
-//$index->atspausdinimas();
