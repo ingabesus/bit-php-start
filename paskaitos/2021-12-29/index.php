@@ -1,7 +1,7 @@
 <?php
 
-//$objektas = new stdClass;
-$objektas = (object);
+$objektas = new stdClass;
+//$objektas = (object)[];
 
 // $masyvas = [];
 // $masyvas = array('1234', 1234);
