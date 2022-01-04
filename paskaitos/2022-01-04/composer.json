@@ -1,0 +1,17 @@
+{
+    "name": "bit/2022-01-04",
+    "description": "Testine aplikacija",
+    "type": "project",
+    "require": {
+        "simplon/mysql": "^2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Crud\\" : "Crud"
+        },
+        "__files": [
+            "classes/Crud/NameStore.php",
+            "classes/Crud/NameModel.php"
+        ]
+    }
+}

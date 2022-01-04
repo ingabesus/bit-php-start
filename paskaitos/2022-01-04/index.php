@@ -1,9 +1,11 @@
 <?php
+//PSR-4
+//PSR-7
 
-spl_autoload_register(function() {
-    require __DIR__ . '/Crud/NameStore.php';
-    require __DIR__ . '/Crud/NameModel.php';
-});
+// spl_autoload_register(function() {
+//     require __DIR__ . '/Crud/NameStore.php';
+//     require __DIR__ . '/Crud/NameModel.php';
+// });
 
 require __DIR__ . '/vendor/autoload.php';
 
