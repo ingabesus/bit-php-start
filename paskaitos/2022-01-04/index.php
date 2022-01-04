@@ -39,17 +39,3 @@ foreach($model as $key => $val) {
     echo $val->getName() . '<br />';
 }
 
-
-$model = $store->create(
-
-    (new CreateQueryBuilder())->setModel(
-
-         (new NameModel())
-
-            ->setName('Petras')
-
-            ->setAge(60)
-
-     )
-
-);
