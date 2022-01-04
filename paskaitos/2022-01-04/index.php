@@ -21,7 +21,6 @@ new MainController();
 
 // $connection = new PDO("mysql:host=localhost;dbname=blogas", 'root', '');
 // $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
 // $dbConn = new Mysql($connection);
 
 // $store = new NameStore($dbConn);
