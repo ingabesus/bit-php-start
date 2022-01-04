@@ -3,11 +3,13 @@
     "description": "Testine aplikacija",
     "type": "project",
     "require": {
-        "simplon/mysql": "^2.2"
+        "simplon/mysql": "^2.2",
+        "altorouter/altorouter": "^2.0"
     },
     "autoload": {
         "psr-4": {
-            "Crud\\" : "Crud"
+            "Crud\\" : "crud",
+            "Controllers\\" : "controllers"
         },
         "__files": [
             "classes/Crud/NameStore.php",

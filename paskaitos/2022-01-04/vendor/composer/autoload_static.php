@@ -28,6 +28,7 @@ class ComposerStaticInit5b5cfa260156b2390d839eb27562ff00
         'C' => 
         array (
             'Crud\\' => 5,
+            'Controllers\\' => 12,
         ),
     );
 
@@ -50,11 +51,16 @@ class ComposerStaticInit5b5cfa260156b2390d839eb27562ff00
         ),
         'Crud\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/Crud',
+            0 => __DIR__ . '/../..' . '/crud',
+        ),
+        'Controllers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/controllers',
         ),
     );
 
     public static $classMap = array (
+        'AltoRouter' => __DIR__ . '/..' . '/altorouter/altorouter/AltoRouter.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 

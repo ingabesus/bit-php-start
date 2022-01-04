@@ -10,5 +10,6 @@ return array(
     'Simplon\\Mysql\\' => array($vendorDir . '/simplon/mysql/src'),
     'Simplon\\Helper\\' => array($vendorDir . '/simplon/helper/src'),
     'DusanKasan\\Knapsack\\' => array($vendorDir . '/dusank/knapsack/src'),
-    'Crud\\' => array($baseDir . '/Crud'),
+    'Crud\\' => array($baseDir . '/crud'),
+    'Controllers\\' => array($baseDir . '/controllers'),
 );

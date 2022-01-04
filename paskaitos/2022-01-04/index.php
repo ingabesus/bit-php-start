@@ -1,26 +1,30 @@
 <?php
-//PSR-4
-//PSR-7
+
+require __DIR__ . '/vendor/autoload.php';
+
+use Controllers\MainController;
+
+new MainController();
+
+
 
 // spl_autoload_register(function() {
 //     require __DIR__ . '/Crud/NameStore.php';
 //     require __DIR__ . '/Crud/NameModel.php';
 // });
 
-require __DIR__ . '/vendor/autoload.php';
+// use Simplon\Mysql\Mysql;
+// use Simplon\Mysql\QueryBuilder\CreateQueryBuilder;
+// use Simplon\Mysql\QueryBuilder\ReadQueryBuilder;
+// use Crud\NameStore;
+// use Crud\NameModel;
 
-use Simplon\Mysql\Mysql;
-use Simplon\Mysql\QueryBuilder\CreateQueryBuilder;
-use Simplon\Mysql\QueryBuilder\ReadQueryBuilder;
-use Crud\NameStore;
-use Crud\NameModel;
+// $connection = new PDO("mysql:host=localhost;dbname=blogas", 'root', '');
+// $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$connection = new PDO("mysql:host=localhost;dbname=blogas", 'root', '');
-$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// $dbConn = new Mysql($connection);
 
-$dbConn = new Mysql($connection);
-
-$store = new NameStore($dbConn);
+// $store = new NameStore($dbConn);
 
 //Nauju duomenu sukurimas
 
@@ -33,9 +37,9 @@ $store = new NameStore($dbConn);
 // );
 
 //Duomenu paemimas
-$model = $store->read( new ReadQueryBuilder() );
+// $model = $store->read( new ReadQueryBuilder() );
 
-foreach($model as $key => $val) {
-    echo $val->getName() . '<br />';
-}
+// foreach($model as $key => $val) {
+//     echo $val->getName() . '<br />';
+// }
 
