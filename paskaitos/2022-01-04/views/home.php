@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-</head>
-<body>
-    <h1>Titulinis Puslapis</h1>
-</body>
-</html>
+<?php require __DIR__ . '/includes/header.php'; ?>
+
+<h1>Titulinis Puslapis</h1>
+<?php echo $kintamasis; ?>
+<form method="POST">
+    <input type="text" name="hello" />
+    <button type="submit">Siųsti</button>
+</form>
+
+<?php require __DIR__ . '/includes/footer.php'; ?>
+
