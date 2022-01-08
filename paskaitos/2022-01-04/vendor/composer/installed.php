@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'c545bc51daa6abb7643c2aed151d720d098f78e3',
+        'reference' => '5343251cee834e26f3aa7e9c5f88a1624e3363ba',
         'name' => 'bit/2022-01-04',
         'dev' => true,
     ),
@@ -25,7 +25,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'c545bc51daa6abb7643c2aed151d720d098f78e3',
+            'reference' => '5343251cee834e26f3aa7e9c5f88a1624e3363ba',
             'dev_requirement' => false,
         ),
         'dusank/knapsack' => array(

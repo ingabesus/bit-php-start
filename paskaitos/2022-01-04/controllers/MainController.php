@@ -16,7 +16,7 @@ class MainController {
 
         $this->router = new \AltoRouter();
         
-        $this->router->setBasePath('/pirmojiaplikacija/bit-php-start/paskaitos/2022-01-04');
+        $this->router->setBasePath('/Pamokos/BIT/bit/bit/bit-php-start/paskaitos/2022-01-04');
 
         $this->router->map('GET', '/', function() {
             require __DIR__ . '/../views/home.php';
